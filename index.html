@@ -75,21 +75,28 @@
     }
 
     .nav a {
-      display: inline-block;
-      color: var(--cream);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--charcoal);
+      background: var(--paper);
       text-decoration: none;
-      font: 700 0.78rem/1.2 "Courier New", monospace;
-      letter-spacing: 0.06em;
+      font: 700 0.76rem/1.2 "Courier New", monospace;
+      letter-spacing: 0.05em;
       text-transform: uppercase;
-      padding: 0.35rem 0.55rem;
+      padding: 0.55rem 0.85rem;
+      border: 1px solid rgba(167, 199, 113, 0.75);
       border-radius: 999px;
-      transition: background 0.2s ease, transform 0.2s ease;
+      box-shadow: 2px 2px 0 rgba(167, 199, 113, 0.45);
+      transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
     }
 
     .nav a:hover,
     .nav a:focus-visible {
-      background: rgba(167, 199, 113, 0.2);
-      transform: translateY(-1px);
+      background: var(--hop);
+      color: var(--charcoal);
+      transform: translateY(-2px);
+      box-shadow: 3px 4px 0 rgba(45, 42, 38, 0.18);
       outline: none;
     }
 
@@ -689,8 +696,6 @@
       .nav ul { justify-content: flex-start; overflow-x: auto; flex-wrap: nowrap; }
       .hero { min-height: auto; }
       .hero-grid { gap: 2.2rem; }
-      .actions { flex-direction: column; align-items: stretch; }
-      .btn { width: 100%; }
       .market-scene { min-height: 18.5rem; border-radius: 1.4rem; }
       .jar { left: 12%; transform: scale(0.82); transform-origin: bottom left; }
       .bottle { left: 38%; transform: scale(0.82); transform-origin: bottom center; }
@@ -724,10 +729,6 @@
           <h1>Hop Goblin Homestead</h1>
           <p class="tagline">Small-batch goods, garden-grown magic, and practical homestead shenanigans.</p>
           <p class="supporting">Refills, useful little goods, garden experiments, and low-waste swaps from a curious local homestead.</p>
-          <div class="actions" aria-label="Page shortcuts">
-            <a class="btn btn-primary" href="#on-the-table">See What’s Available</a>
-            <a class="btn btn-secondary" href="#how-it-works">How It Works</a>
-          </div>
         </div>
 
         <div class="market-scene" aria-label="CSS-only rustic market shelf illustration">
