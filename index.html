@@ -1,602 +1,930 @@
 <!doctype html>
-<html lang="en" class="h-full">
- <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Hop Goblin Homestead offers small-batch goods, garden-grown magic, practical homestead shenanigans, refills, useful little goods, and low-waste swaps." />
   <title>Hop Goblin Homestead</title>
-  <script src="/_sdk/element_sdk.js"></script>
   <style>
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html, body { height: 100%; }
-body {
-  font-family: Georgia, 'Times New Roman', serif;
-  background: #f5f0e8;
-  color: #2d2a26;
-  line-height: 1.6;
-  overflow-x: hidden;
-}
-/* Kraft texture overlay */
-body::before {
-  content: '';
-  position: fixed;
-  top: 0; left: 0; right: 0; bottom: 0;
-  background-image: 
-    radial-gradient(ellipse at 20% 50%, rgba(139,119,90,0.03) 0%, transparent 50%),
-    radial-gradient(ellipse at 80% 20%, rgba(87,107,68,0.03) 0%, transparent 50%),
-    repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.008) 2px, rgba(0,0,0,0.008) 4px);
-  pointer-events: none;
-  z-index: 0;
-}
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-.wrapper { position: relative; z-index: 1; }
+    :root {
+      --ink: #2d2a26;
+      --charcoal: #38332d;
+      --moss: #5f7f43;
+      --sage: #8fa77a;
+      --hop: #a7c771;
+      --cream: #f7f1e4;
+      --paper: #fff9ec;
+      --kraft: #d8c6a2;
+      --brown: #7b6245;
+      --gold: #c0a458;
+      --shadow: rgba(45, 42, 38, 0.18);
+    }
 
-/* Navigation */
-nav {
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  background: #3a3530;
-  border-bottom: 3px dashed #6b8f4a;
-  padding: 0.6rem 1rem;
-}
-nav ul {
-  list-style: none;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 0.3rem 1.2rem;
-}
-nav a {
-  color: #e8dfc9;
-  text-decoration: none;
-  font-size: 0.85rem;
-  font-family: 'Courier New', monospace;
-  letter-spacing: 0.5px;
-  padding: 0.2rem 0.5rem;
-  border-radius: 3px;
-  transition: background 0.2s;
-}
-nav a:hover { background: rgba(107,143,74,0.3); }
+    html { scroll-behavior: smooth; }
 
-/* Headings */
-h1, h2, h3 {
-  font-family: Georgia, 'Times New Roman', serif;
-  font-weight: normal;
-}
-h1 { font-size: clamp(2rem, 5vw, 3.2rem); color: #2d2a26; }
-h2 {
-  font-size: clamp(1.8rem, 4vw, 2.8rem);
-  color: #2d2a26;
-  text-align: center;
-  margin-bottom: 2.5rem;
-  position: relative;
-  font-weight: bold;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  padding-bottom: 1.2rem;
-}
-h2::after {
-  content: '~ ✦ ~';
-  display: block;
-  font-size: 0.9rem;
-  color: #6b8f4a;
-  margin-top: 0.6rem;
-  letter-spacing: 6px;
-  font-weight: normal;
-}
-h2::before {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 80px;
-  height: 3px;
-  background: linear-gradient(90deg, transparent, #6b8f4a, transparent);
-}
+    body {
+      min-height: 100vh;
+      background:
+        radial-gradient(circle at 18% 12%, rgba(95, 127, 67, 0.09), transparent 28rem),
+        radial-gradient(circle at 84% 18%, rgba(192, 164, 88, 0.09), transparent 24rem),
+        linear-gradient(135deg, #f5eedf 0%, #fbf6eb 45%, #efe2cb 100%);
+      color: var(--ink);
+      font-family: Georgia, "Times New Roman", serif;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
 
-/* Sections */
-section {
-  padding: 3rem 1.5rem;
-  max-width: 1100px;
-  margin: 0 auto;
-}
-.section-alt {
-  background: #eae4d8;
-  max-width: 100%;
-  border-top: 2px dashed #c4b99a;
-  border-bottom: 2px dashed #c4b99a;
-}
-.section-alt .inner { max-width: 1100px; margin: 0 auto; }
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      background-image:
+        repeating-linear-gradient(0deg, rgba(45, 42, 38, 0.018) 0 1px, transparent 1px 4px),
+        repeating-linear-gradient(90deg, rgba(123, 98, 69, 0.012) 0 1px, transparent 1px 6px);
+      mix-blend-mode: multiply;
+    }
 
-/* Hero */
-.hero {
-  text-align: center;
-  padding: 4rem 1.5rem 3rem;
-  position: relative;
-}
-.hero-title {
-  letter-spacing: 1px;
-  margin-bottom: 0.5rem;
-}
-.hero-tagline {
-  font-style: italic;
-  font-size: clamp(1rem, 2.5vw, 1.3rem);
-  color: #5a6b45;
-  margin-bottom: 0.8rem;
-}
-.hero-supporting {
-  font-family: Georgia, 'Times New Roman', serif;
-  font-size: 0.85rem;
-  color: #6b6052;
-  max-width: 550px;
-  margin: 0 auto 1.5rem;
-}
-.btn {
-  display: inline-block;
-  padding: 0.7rem 1.5rem;
-  border-radius: 20px;
-  text-decoration: none;
-  font-family: 'Courier New', monospace;
-  font-size: 0.85rem;
-  font-weight: bold;
-  margin: 0.3rem;
-  transition: transform 0.2s, box-shadow 0.2s;
-  cursor: pointer;
-  border: none;
-}
-.btn:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
-.btn-primary { background: #6b8f4a; color: #fff; }
-.btn-secondary { background: transparent; color: #3a3530; border: 2px dashed #6b8f4a; }
+    a { color: inherit; }
 
-/* Market Shelf Scene */
+    .page { position: relative; z-index: 1; }
 
-/* Step Cards */
-.steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; }
-.step-card {
-  background: #faf7f0;
-  border: 2px dashed #c4b99a;
-  border-radius: 12px;
-  padding: 1.5rem;
-  text-align: center;
-  position: relative;
-  box-shadow: 3px 3px 0 #d9cfbf;
-}
-.step-num {
-  position: absolute;
-  top: -14px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: #6b8f4a;
-  color: #fff;
-  width: 28px; height: 28px;
-  border-radius: 50%;
-  display: flex; align-items: center; justify-content: center;
-  font-family: 'Courier New', monospace;
-  font-size: 0.8rem;
-  font-weight: bold;
-}
-.step-card h3 {
-  font-size: 1rem;
-  margin: 0.5rem 0;
-  color: #3a3530;
-}
-.step-card p {
-  font-size: 0.85rem;
-  color: #6b6052;
-  font-family: 'Courier New', monospace;
-}
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: rgba(56, 51, 45, 0.96);
+      border-bottom: 3px dashed var(--sage);
+      box-shadow: 0 8px 24px rgba(45, 42, 38, 0.18);
+      backdrop-filter: blur(10px);
+    }
 
-/* FAQ */
-.faq-list { max-width: 700px; margin: 0 auto; }
-.faq-item {
-  background: #faf7f0;
-  border: 1px solid #c4b99a;
-  border-left: 4px solid #6b8f4a;
-  border-radius: 4px;
-  margin-bottom: 1rem;
-  overflow: hidden;
-  box-shadow: 2px 2px 0 #e0d8c8;
-}
-.faq-q {
-  padding: 1rem 1.2rem;
-  cursor: pointer;
-  font-weight: bold;
-  font-size: 0.95rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-.faq-q::after { content: '+'; font-size: 1.2rem; color: #6b8f4a; transition: transform 0.2s; }
-.faq-item.open .faq-q::after { transform: rotate(45deg); }
-.faq-a {
-  padding: 0 1.2rem;
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.3s ease, padding 0.3s ease;
-  font-size: 0.85rem;
-  font-family: 'Courier New', monospace;
-  color: #6b6052;
-}
-.faq-item.open .faq-a { max-height: 200px; padding: 0 1.2rem 1rem; }
+    .nav ul {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0.65rem 1rem;
+      list-style: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 0.35rem 1rem;
+    }
 
-/* Product Cards */
-.products { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.2rem; }
-.product-card {
-  background: #3a3530;
-  color: #e8dfc9;
-  border-radius: 8px;
-  padding: 1.3rem;
-  position: relative;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-}
-.product-card::before {
-  content: '';
-  position: absolute;
-  top: 8px; left: 8px; right: 8px; bottom: 8px;
-  border: 1px dashed rgba(107,143,74,0.4);
-  border-radius: 4px;
-  pointer-events: none;
-}
-.product-icon {
-  font-size: 1.5rem;
-  display: inline-block;
-  vertical-align: middle;
-  flex-shrink: 0;
-  margin-left: auto;
-}
-.product-card h3 {
-  font-size: 1rem;
-  color: #b8d4a0;
-  margin-bottom: 0.8rem;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 0.8rem;
-}
-.product-card p {
-  font-size: 0.8rem;
-  font-family: 'Courier New', monospace;
-  line-height: 1.6;
-  opacity: 1;
-  color: #e8dfc9;
-  margin-bottom: 0.8rem;
-}
-.product-detail {
-  font-size: 0.7rem;
-  font-family: 'Courier New', monospace;
-  color: #8ba97f;
-  border-top: 1px dashed rgba(139,175,106,0.3);
-  padding-top: 0.6rem;
-  margin-top: 0.6rem;
-}
-.detail-label {
-  color: #a0b88a;
-  font-weight: bold;
-}
+    .nav a {
+      display: inline-block;
+      color: var(--cream);
+      text-decoration: none;
+      font: 700 0.78rem/1.2 "Courier New", monospace;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 0.35rem 0.55rem;
+      border-radius: 999px;
+      transition: background 0.2s ease, transform 0.2s ease;
+    }
 
-/* About */
-.about-box {
-  background: #faf7f0;
-  border: 2px solid #c4b99a;
-  border-radius: 8px;
-  padding: 2rem;
-  max-width: 700px;
-  margin: 0 auto;
-  box-shadow: 4px 4px 0 #d9cfbf;
-  position: relative;
-}
-.about-box::before {
-  content: '🌿';
-  position: absolute;
-  top: -12px;
-  left: 20px;
-  font-size: 1.2rem;
-}
-.about-box p {
-  font-size: 0.9rem;
-  margin-bottom: 0.8rem;
-  color: #4a4540;
-}
+    .nav a:hover,
+    .nav a:focus-visible {
+      background: rgba(167, 199, 113, 0.2);
+      transform: translateY(-1px);
+      outline: none;
+    }
 
-/* Find Me / Contact */
-.find-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
-.info-card {
-  background: #faf7f0;
-  border: 2px dashed #c4b99a;
-  border-radius: 8px;
-  padding: 1.5rem;
-  box-shadow: 2px 2px 0 #d9cfbf;
-}
-.info-card h3 { font-size: 1.1rem; color: #5a6b45; margin-bottom: 0.8rem; }
-.info-card p, .info-card li {
-  font-size: 0.85rem;
-  font-family: 'Courier New', monospace;
-  color: #6b6052;
-  margin-bottom: 0.4rem;
-}
-.info-card ul { list-style: none; padding: 0; }
-.info-card li::before { content: '· '; color: #6b8f4a; }
+    header, section { padding: 4rem 1.25rem; }
 
-/* Footer */
-footer {
-  background: #3a3530;
-  color: #a09888;
-  text-align: center;
-  padding: 2rem 1rem;
-  font-family: 'Courier New', monospace;
-  font-size: 0.75rem;
-  border-top: 3px dashed #6b8f4a;
-}
-footer span { color: #6b8f4a; }
+    .inner {
+      width: min(1120px, 100%);
+      margin: 0 auto;
+    }
 
-/* Divider */
-.divider {
-  text-align: center;
-  margin: 0.5rem 0;
-  color: #c4b99a;
-  letter-spacing: 6px;
-  font-size: 0.7rem;
-}
+    .hero {
+      position: relative;
+      min-height: 78vh;
+      display: grid;
+      place-items: center;
+      border-bottom: 3px dashed rgba(95, 127, 67, 0.6);
+      overflow: hidden;
+    }
 
-@media (max-width: 600px) {
-  section { padding: 2rem 1rem; }
-}
-</style>
-  <style>body { box-sizing: border-box; }</style>
-  <script src="https://cdn.tailwindcss.com/3.4.17" type="text/javascript"></script>
-  <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js" type="text/javascript"></script>
-  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
- </head>
- <body>
-  <div class="wrapper">
-   <nav>
-    <ul>
-     <li><a href="#how-it-works">How It Works</a></li>
-     <li><a href="#faq">FAQ</a></li>
-     <li><a href="#products">Product Info</a></li>
-     <li><a href="#about">About</a></li>
-     <li><a href="#find">Find Me</a></li>
-     <li><a href="#contact">Contact</a></li>
-    </ul>
-   </nav>
-   <header class="hero" style="background: linear-gradient(135deg, #eae4d8 0%, #f5f0e8 50%, #eae4d8 100%); border-bottom: 3px dashed #6b8f4a; position: relative; overflow: hidden;">
-    <div style="position: absolute; top: -20px; right: -20px; font-size: 120px; opacity: 0.08; z-index: 0;">
-     🌿
-    </div>
-    <div style="position: absolute; bottom: -30px; left: -30px; font-size: 140px; opacity: 0.06; z-index: 0;">
-     🏡
-    </div>
-    <div style="position: relative; z-index: 1;">
-     <div style="font-size: 3.5rem; margin-bottom: 1.2rem; color: #6b8f4a;">
-      🧺✦🌿
-     </div>
-     <h1 class="hero-title" id="heroTitle" style="letter-spacing: 3px; text-transform: uppercase; font-size: clamp(2.2rem, 6vw, 3.5rem); margin-bottom: 0.8rem;">Hop Goblin Homestead</h1>
-     <p class="hero-tagline" id="heroTagline" style="font-style: italic; font-size: clamp(1.1rem, 2.5vw, 1.4rem); color: #5a6b45; margin-bottom: 1.2rem; max-width: 600px; margin-left: auto; margin-right: auto;">Small-batch goods, garden-grown magic, and practical homestead shenanigans.</p>
-     <p class="hero-supporting" id="heroSupporting" style="font-size: 0.9rem; color: #6b6052; max-width: 580px; margin: 0 auto 2rem; line-height: 1.8;">Refills, useful little goods, garden experiments, and low-waste swaps from a curious local homestead.</p>
-    </div>
-   </header>
-   <div class="divider">
-    · · · ✦ · · ·
-   </div>
-   <section id="how-it-works">
-    <h2>How It Works</h2>
-    <div class="steps">
-     <div class="step-card">
-      <div class="step-num">
-       1
-      </div>
-      <h3>Bring a container or grab a jar</h3>
-      <p>Reuse what you have or pick up a simple container at the table. No pressure either way.</p>
-     </div>
-     <div class="step-card">
-      <div class="step-num">
-       2
-      </div>
-      <h3>Refill, shop, or ask questions</h3>
-      <p>Browse practical goods, refill basics, garden items, and small-batch experiments. Everything's labeled and there's always time to chat.</p>
-     </div>
-     <div class="step-card">
-      <div class="step-num">
-       3
-      </div>
-      <h3>Take home useful little goods with less waste</h3>
-      <p>Simple swaps, local goods, and a little homestead magic without the extra packaging.</p>
-     </div>
-    </div>
-   </section>
-   <div class="section-alt">
-    <section id="faq">
-     <div class="inner">
-      <h2>Frequently Asked Questions</h2>
-      <div class="faq-list">
-       <div class="faq-item">
-        <div class="faq-q">
-         Do I need to bring my own container?
-        </div>
-        <div class="faq-a">
-         Nope! Bringing your own is great, but there are always jars and containers available at the table. No stress.
-        </div>
-       </div>
-       <div class="faq-item">
-        <div class="faq-q">
-         What kinds of products do you carry?
-        </div>
-        <div class="faq-a">
-         Liquid refills (soap, cleaners), mushroom and garden goods, small handmade items, brewing-inspired curiosities, herb blends, and practical low-waste swaps.
-        </div>
-       </div>
-       <div class="faq-item">
-        <div class="faq-q">
-         Are products available every week?
-        </div>
-        <div class="faq-a">
-         Most staples are consistent, but seasonal items rotate. Check the current list before you visit—it updates regularly.
-        </div>
-       </div>
-       <div class="faq-item">
-        <div class="faq-q">
-         How do refills work?
-        </div>
-        <div class="faq-a">
-         Bring or grab a container, fill what you need, and pay by weight or volume. Simple as that. Labels and instructions provided.
-        </div>
-       </div>
-       <div class="faq-item">
-        <div class="faq-q">
-         Where can I find you next?
-        </div>
-        <div class="faq-a">
-         Check the "Find Me" section below for upcoming market dates and locations. Updates posted weekly.
-        </div>
-       </div>
-      </div>
-     </div>
-    </section>
-   </div>
-   <section id="products">
-    <h2>What's on the Table</h2>
-    <div class="products">
-     <div class="product-card">
-      <h3><span>Refill Station</span><span class="product-icon">🧼</span></h3>
-      <p>Laundry, dish, hand, and Castile-style basics priced by the ounce. Bring your bottles or grab a jar.</p>
-      <div class="product-detail"><span class="detail-label">Pricing:</span> by volume
-      </div>
-     </div>
-     <div class="product-card">
-      <h3><span>Mushrooms &amp; Garden</span><span class="product-icon">🍄</span></h3>
-      <p>Seasonal grow experiments, oyster kits, garden goods, compost starters, and plant-adjacent offerings.</p>
-      <div class="product-detail"><span class="detail-label">Seasonal:</span> varies weekly
-      </div>
-     </div>
-     <div class="product-card">
-      <h3><span>Homestead Goods</span><span class="product-icon">🏺</span></h3>
-      <p>Small useful goods, jars, handmade items, practical low-waste swaps, and curiosities from the workshop.</p>
-      <div class="product-detail"><span class="detail-label">Usually in stock</span>
-      </div>
-     </div>
-     <div class="product-card">
-      <h3><span>Brewing-Inspired Items</span><span class="product-icon">🌾</span></h3>
-      <p>Hop-forward experiments, spent-grain goods, brewing-adjacent products, and flavor collaborations.</p>
-      <div class="product-detail"><span class="detail-label">Limited edition</span>
-      </div>
-     </div>
-     <div class="product-card">
-      <h3><span>Herbs &amp; Apothecary</span><span class="product-icon">🌿</span></h3>
-      <p>Dried blends, simple tinctures, tea mixes, herbal salts, and garden-grown herbal goods.</p>
-      <div class="product-detail"><span class="detail-label">Made fresh</span>
-      </div>
-     </div>
-    </div>
-   </section>
-   <div class="section-alt">
-    <section id="about">
-     <div class="inner">
-      <h2>About the Homestead</h2>
-      <div class="about-box">
-       <p>Hop Goblin Homestead is a small, curious operation run from a real homestead. It started with too many mushrooms, a soap experiment, and a hop vine that wouldn't quit.</p>
-       <p>Everything here is made, grown, or sourced with intention—low-waste, practical, and a little bit clever. No grand claims, just useful goods from someone who likes making things and has a quirky sense of humor.</p>
-       <p>The goblin is mostly metaphorical. Mostly.</p>
-      </div>
-     </div>
-    </section>
-   </div>
-   <section id="find">
-    <h2>Find Me</h2>
-    <div class="find-grid">
-     <div class="info-card">
-      <h3>Upcoming Markets</h3>
+    .hero::before,
+    .hero::after {
+      content: "";
+      position: absolute;
+      border-radius: 50%;
+      opacity: 0.14;
+      border: 2px dashed var(--moss);
+    }
+
+    .hero::before { width: 18rem; height: 18rem; right: -6rem; top: 6rem; }
+    .hero::after { width: 12rem; height: 12rem; left: -4rem; bottom: 4rem; }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(18rem, 0.9fr);
+      gap: clamp(2rem, 5vw, 4rem);
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+      margin-bottom: 1.1rem;
+      padding: 0.45rem 0.75rem;
+      background: rgba(255, 249, 236, 0.72);
+      border: 1px dashed rgba(123, 98, 69, 0.45);
+      border-radius: 999px;
+      color: var(--brown);
+      font: 700 0.78rem/1 "Courier New", monospace;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      box-shadow: 2px 2px 0 rgba(216, 198, 162, 0.8);
+    }
+
+    .eyebrow::before,
+    .eyebrow::after { content: "✦"; color: var(--moss); }
+
+    h1 {
+      font-size: clamp(2.65rem, 7vw, 5.7rem);
+      line-height: 0.92;
+      letter-spacing: -0.05em;
+      max-width: 9ch;
+      color: var(--charcoal);
+      text-wrap: balance;
+      text-shadow: 2px 2px 0 rgba(216, 198, 162, 0.55);
+    }
+
+    .tagline {
+      margin-top: 1.1rem;
+      color: var(--moss);
+      font-size: clamp(1.1rem, 2.2vw, 1.45rem);
+      font-style: italic;
+      max-width: 42rem;
+    }
+
+    .supporting {
+      margin-top: 1rem;
+      max-width: 38rem;
+      color: #65594b;
+      font: 400 0.98rem/1.8 "Courier New", monospace;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      margin-top: 1.6rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 2.8rem;
+      padding: 0.75rem 1.2rem;
+      border-radius: 999px;
+      border: 2px solid var(--moss);
+      text-decoration: none;
+      font: 700 0.83rem/1.1 "Courier New", monospace;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+    }
+
+    .btn:hover { transform: translateY(-2px); box-shadow: 4px 5px 0 rgba(45, 42, 38, 0.14); }
+    .btn-primary { background: var(--moss); color: #fffdf5; }
+    .btn-secondary { background: var(--paper); color: var(--charcoal); border-style: dashed; }
+
+    .market-scene {
+      position: relative;
+      min-height: 25rem;
+      border: 2px dashed rgba(123, 98, 69, 0.48);
+      border-radius: 2rem;
+      background:
+        linear-gradient(180deg, rgba(255, 249, 236, 0.9), rgba(238, 224, 198, 0.88)),
+        repeating-linear-gradient(90deg, rgba(123, 98, 69, 0.08) 0 1px, transparent 1px 9px);
+      box-shadow: 10px 12px 0 rgba(216, 198, 162, 0.6), inset 0 0 0 9px rgba(255, 255, 255, 0.22);
+      overflow: hidden;
+    }
+
+    .shelf {
+      position: absolute;
+      left: 10%;
+      right: 10%;
+      height: 1.1rem;
+      background: linear-gradient(180deg, #8a6a45, #5f452b);
+      border-radius: 999px;
+      box-shadow: 0 8px 0 rgba(45, 42, 38, 0.12);
+    }
+
+    .shelf.one { top: 42%; }
+    .shelf.two { top: 72%; }
+
+    .jar, .bottle, .mushroom, .hop, .tiny-tag, .footprint { position: absolute; }
+
+    .jar {
+      width: 4rem;
+      height: 5.6rem;
+      bottom: 30%;
+      left: 16%;
+      border: 3px solid rgba(95, 127, 67, 0.7);
+      border-radius: 0.7rem 0.7rem 1.1rem 1.1rem;
+      background: rgba(255, 249, 236, 0.7);
+      box-shadow: inset 0 0 0 7px rgba(255, 255, 255, 0.22);
+    }
+
+    .jar::before {
+      content: "refill";
+      position: absolute;
+      left: 50%;
+      top: 45%;
+      transform: translate(-50%, -50%) rotate(-4deg);
+      background: var(--kraft);
+      color: var(--charcoal);
+      padding: 0.15rem 0.35rem;
+      border: 1px dashed var(--brown);
+      font: 700 0.58rem/1 "Courier New", monospace;
+    }
+
+    .bottle {
+      width: 3.2rem;
+      height: 7rem;
+      bottom: 30%;
+      left: 38%;
+      border-radius: 0.5rem 0.5rem 1.2rem 1.2rem;
+      background: linear-gradient(180deg, var(--sage), var(--moss));
+      border: 3px solid rgba(56, 51, 45, 0.24);
+    }
+
+    .bottle::before {
+      content: "";
+      position: absolute;
+      top: -1.15rem;
+      left: 0.8rem;
+      width: 1.4rem;
+      height: 1.3rem;
+      background: var(--moss);
+      border-radius: 0.25rem 0.25rem 0 0;
+    }
+
+    .bottle::after {
+      content: "soap";
+      position: absolute;
+      left: 50%;
+      bottom: 1.45rem;
+      transform: translateX(-50%);
+      background: var(--paper);
+      padding: 0.15rem 0.25rem;
+      border-radius: 0.2rem;
+      font: 700 0.55rem/1 "Courier New", monospace;
+      color: var(--charcoal);
+    }
+
+    .mushroom {
+      right: 17%;
+      bottom: 30%;
+      width: 5.6rem;
+      height: 5rem;
+    }
+
+    .mushroom::before {
+      content: "";
+      position: absolute;
+      width: 5.6rem;
+      height: 2.9rem;
+      background: #b48a65;
+      border-radius: 4rem 4rem 1rem 1rem;
+      border: 3px solid rgba(56, 51, 45, 0.18);
+    }
+
+    .mushroom::after {
+      content: "";
+      position: absolute;
+      width: 1.6rem;
+      height: 3.4rem;
+      left: 2rem;
+      top: 2rem;
+      background: #f4ead8;
+      border-radius: 0.65rem;
+      border: 2px solid rgba(56, 51, 45, 0.12);
+    }
+
+    .hop {
+      width: 4.4rem;
+      height: 6rem;
+      right: 32%;
+      top: 10%;
+    }
+
+    .hop::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse at 50% 18%, var(--hop) 0 22%, transparent 24%),
+        radial-gradient(ellipse at 35% 38%, var(--sage) 0 22%, transparent 24%),
+        radial-gradient(ellipse at 65% 38%, var(--sage) 0 22%, transparent 24%),
+        radial-gradient(ellipse at 50% 58%, var(--moss) 0 25%, transparent 27%),
+        radial-gradient(ellipse at 50% 82%, var(--sage) 0 18%, transparent 20%);
+      filter: drop-shadow(2px 3px 0 rgba(45, 42, 38, 0.15));
+    }
+
+    .tiny-tag {
+      right: 8%;
+      top: 56%;
+      transform: rotate(7deg);
+      background: var(--paper);
+      border: 1px dashed var(--brown);
+      color: var(--brown);
+      padding: 0.4rem 0.5rem;
+      border-radius: 0.35rem;
+      font: 700 0.6rem/1.2 "Courier New", monospace;
+      box-shadow: 3px 3px 0 rgba(216, 198, 162, 0.8);
+    }
+
+    .footprint {
+      color: rgba(56, 51, 45, 0.35);
+      font: 700 1.5rem/1 "Courier New", monospace;
+      letter-spacing: 0.12rem;
+      transform: rotate(-18deg);
+      left: 12%;
+      top: 18%;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 2.4rem;
+    }
+
+    h2 {
+      color: var(--charcoal);
+      font-size: clamp(2rem, 4vw, 3rem);
+      line-height: 1;
+      letter-spacing: -0.035em;
+      text-wrap: balance;
+    }
+
+    .section-kicker {
+      display: inline-block;
+      margin-bottom: 0.55rem;
+      color: var(--brown);
+      font: 700 0.76rem/1 "Courier New", monospace;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .divider {
+      width: min(16rem, 50vw);
+      height: 0.7rem;
+      margin: 1rem auto 0;
+      background:
+        radial-gradient(circle, var(--moss) 0 18%, transparent 20%) 0 0 / 1rem 0.7rem repeat-x;
+      opacity: 0.55;
+    }
+
+    .section-alt {
+      max-width: none;
+      background: rgba(232, 220, 196, 0.58);
+      border-block: 2px dashed rgba(123, 98, 69, 0.34);
+    }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.2rem;
+    }
+
+    .card {
+      position: relative;
+      background: var(--paper);
+      border: 2px dashed rgba(123, 98, 69, 0.45);
+      border-radius: 1.1rem;
+      box-shadow: 5px 6px 0 rgba(216, 198, 162, 0.72);
+    }
+
+    .step-card {
+      padding: 2rem 1.4rem 1.45rem;
+      min-height: 100%;
+      transform: rotate(var(--tilt, 0deg));
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .step-card:hover { transform: rotate(0deg) translateY(-3px); box-shadow: 7px 8px 0 rgba(216, 198, 162, 0.9); }
+    .step-card:nth-child(1) { --tilt: -1deg; }
+    .step-card:nth-child(2) { --tilt: 0.8deg; }
+    .step-card:nth-child(3) { --tilt: -0.4deg; }
+
+    .step-num {
+      position: absolute;
+      top: -1rem;
+      left: 1.2rem;
+      display: grid;
+      place-items: center;
+      width: 2.25rem;
+      height: 2.25rem;
+      border-radius: 999px;
+      background: var(--moss);
+      color: white;
+      font: 700 1rem/1 "Courier New", monospace;
+      box-shadow: 2px 2px 0 rgba(45, 42, 38, 0.15);
+    }
+
+    h3 {
+      color: var(--charcoal);
+      font-size: 1.18rem;
+      line-height: 1.18;
+      margin-bottom: 0.65rem;
+    }
+
+    .card p,
+    .faq-a,
+    .market-note,
+    .contact-card p,
+    .schedule li {
+      color: #625747;
+      font: 400 0.9rem/1.65 "Courier New", monospace;
+    }
+
+    .faq-grid {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 1rem;
+    }
+
+    .faq-item {
+      min-height: 100%;
+      padding: 1.1rem;
+      background: var(--paper);
+      border: 1px solid rgba(123, 98, 69, 0.28);
+      border-left: 5px solid var(--moss);
+      border-radius: 0.6rem;
+      box-shadow: 3px 4px 0 rgba(216, 198, 162, 0.75);
+    }
+
+    .faq-q {
+      display: block;
+      margin-bottom: 0.45rem;
+      color: var(--charcoal);
+      font-size: 0.95rem;
+      line-height: 1.2;
+    }
+
+    .products {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 1rem;
+      align-items: stretch;
+    }
+
+    .product-card {
+      position: relative;
+      padding: 1.1rem;
+      min-height: 100%;
+      background:
+        linear-gradient(180deg, rgba(56, 51, 45, 0.98), rgba(45, 42, 38, 0.98)),
+        repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.04) 0 1px, transparent 1px 5px);
+      color: var(--cream);
+      border-radius: 1rem;
+      border: 1px solid rgba(167, 199, 113, 0.25);
+      box-shadow: 0 0.9rem 2rem rgba(45, 42, 38, 0.18);
+      overflow: hidden;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .product-card::before {
+      content: "";
+      position: absolute;
+      inset: 0.55rem;
+      border: 1px dashed rgba(167, 199, 113, 0.34);
+      border-radius: 0.65rem;
+      pointer-events: none;
+    }
+
+    .product-card:hover { transform: translateY(-4px); box-shadow: 0 1.2rem 2.2rem rgba(45, 42, 38, 0.24); }
+
+    .product-label {
+      position: relative;
+      display: inline-block;
+      margin-bottom: 0.85rem;
+      padding: 0.23rem 0.4rem;
+      color: var(--charcoal);
+      background: var(--kraft);
+      border: 1px dashed rgba(56, 51, 45, 0.35);
+      border-radius: 0.3rem;
+      font: 700 0.62rem/1 "Courier New", monospace;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .product-card h3 { color: var(--hop); font-size: 1.05rem; }
+    .product-card p { color: #eadfc9; font: 400 0.82rem/1.62 "Courier New", monospace; }
+
+    .product-detail {
+      position: relative;
+      margin-top: 0.85rem;
+      padding-top: 0.7rem;
+      border-top: 1px dashed rgba(167, 199, 113, 0.34);
+      color: #b6c8a0;
+      font: 700 0.72rem/1.35 "Courier New", monospace;
+    }
+
+    .about-wrap {
+      display: grid;
+      grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+      gap: 1.5rem;
+      align-items: stretch;
+    }
+
+    .maker-mark {
+      display: grid;
+      place-items: center;
+      min-height: 100%;
+      padding: 2rem;
+      background: var(--charcoal);
+      color: var(--cream);
+      border-radius: 1.4rem;
+      box-shadow: 7px 8px 0 rgba(216, 198, 162, 0.7);
+      border: 2px dashed rgba(167, 199, 113, 0.45);
+      text-align: center;
+    }
+
+    .maker-mark strong {
+      display: block;
+      max-width: 10ch;
+      font-size: clamp(2rem, 5vw, 3.6rem);
+      line-height: 0.95;
+      letter-spacing: -0.05em;
+      text-shadow: 2px 2px 0 rgba(95, 127, 67, 0.5);
+    }
+
+    .maker-mark span {
+      margin-top: 1rem;
+      color: var(--hop);
+      font: 700 0.8rem/1.5 "Courier New", monospace;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    .about-box {
+      padding: 1.7rem;
+    }
+
+    .about-box p { margin-bottom: 1rem; }
+    .about-box p:last-child { margin-bottom: 0; font-style: italic; color: var(--moss); }
+
+    .find-contact-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+      gap: 1.3rem;
+      align-items: start;
+    }
+
+    .chalkboard {
+      padding: 1.5rem;
+      color: var(--cream);
+      background:
+        linear-gradient(180deg, rgba(56, 65, 48, 0.96), rgba(38, 45, 36, 0.98)),
+        repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.03) 0 1px, transparent 1px 5px);
+      border: 0.7rem solid #7a5b39;
+      border-radius: 1rem;
+      box-shadow: 6px 8px 0 rgba(45, 42, 38, 0.15), inset 0 0 0 2px rgba(255, 255, 255, 0.08);
+    }
+
+    .chalkboard h3,
+    .chalkboard .schedule li { color: var(--cream); }
+
+    .schedule {
+      margin: 1rem 0;
+      list-style: none;
+      font-family: "Courier New", monospace;
+    }
+
+    .schedule li {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 0.72rem 0;
+      border-bottom: 1px dashed rgba(247, 241, 228, 0.32);
+    }
+
+    .schedule span:first-child { color: var(--hop); font-weight: 700; }
+
+    .market-note {
+      margin-top: 1rem;
+      color: #d9e4c4;
+    }
+
+    .contact-card {
+      padding: 1.5rem;
+    }
+
+    .contact-list {
+      display: grid;
+      gap: 0.6rem;
+      margin: 1rem 0;
+      list-style: none;
+      color: #625747;
+      font: 700 0.92rem/1.45 "Courier New", monospace;
+    }
+
+    .contact-list li {
+      padding: 0.7rem 0.8rem;
+      background: rgba(216, 198, 162, 0.26);
+      border-radius: 0.65rem;
+      border: 1px dashed rgba(123, 98, 69, 0.28);
+    }
+
+    .form-preview {
+      display: grid;
+      gap: 0.7rem;
+      margin-top: 1rem;
+    }
+
+    .field {
+      min-height: 2.7rem;
+      padding: 0.75rem;
+      border: 1px dashed rgba(123, 98, 69, 0.45);
+      border-radius: 0.7rem;
+      background: rgba(255, 249, 236, 0.75);
+      color: #7b6c59;
+      font: 400 0.82rem/1 "Courier New", monospace;
+    }
+
+    .field.message { min-height: 5rem; }
+
+    footer {
+      padding: 2rem 1rem;
+      background: var(--charcoal);
+      color: #d4c6aa;
+      text-align: center;
+      border-top: 3px dashed var(--sage);
+      font: 400 0.78rem/1.65 "Courier New", monospace;
+    }
+
+    footer strong {
+      display: block;
+      margin-bottom: 0.3rem;
+      color: var(--hop);
+      font-size: 0.9rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    @media (max-width: 980px) {
+      .hero-grid,
+      .about-wrap,
+      .find-contact-grid { grid-template-columns: 1fr; }
+      h1 { max-width: 11ch; }
+      .market-scene { min-height: 22rem; }
+      .steps { grid-template-columns: 1fr; }
+      .faq-grid,
+      .products { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+
+    @media (max-width: 640px) {
+      header, section { padding: 3rem 1rem; }
+      .nav ul { justify-content: flex-start; overflow-x: auto; flex-wrap: nowrap; }
+      .hero { min-height: auto; }
+      .hero-grid { gap: 2.2rem; }
+      .actions { flex-direction: column; align-items: stretch; }
+      .btn { width: 100%; }
+      .market-scene { min-height: 18.5rem; border-radius: 1.4rem; }
+      .jar { left: 12%; transform: scale(0.82); transform-origin: bottom left; }
+      .bottle { left: 38%; transform: scale(0.82); transform-origin: bottom center; }
+      .mushroom { right: 9%; transform: scale(0.78); transform-origin: bottom right; }
+      .hop { right: 30%; transform: scale(0.72); transform-origin: top right; }
+      .tiny-tag { right: 4%; top: 49%; }
+      .faq-grid,
+      .products { grid-template-columns: 1fr; }
+      .schedule li { display: block; }
+      .schedule span { display: block; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <nav class="nav" aria-label="Primary navigation">
       <ul>
-       <li>Saturday Morning Market — weekly</li>
-       <li>First Friday Night Market — monthly</li>
-       <li>Seasonal pop-ups — check socials</li>
+        <li><a href="#how-it-works">How It Works</a></li>
+        <li><a href="#good-to-know">Good to Know</a></li>
+        <li><a href="#on-the-table">On the Table</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#find-me">Find Me</a></li>
+        <li><a href="#contact">Contact</a></li>
       </ul>
-     </div>
-    </div>
-   </section>
-   <section id="contact">
-    <h2>Get in Touch</h2>
-    <div class="find-grid">
-     <div class="info-card">
-      <h3>Questions or Custom Orders?</h3>
-      <p>hello@hopgoblinhomestead.com</p>
-      <p>DM on socials anytime.</p>
-     </div>
-    </div>
-   </section>
-   <footer>
-    <p><span>⌂</span> Hop Goblin Homestead · Small-batch · Garden-grown · Low-waste</p>
-    <p style="margin-top:0.5rem;">Made with dirt, curiosity, and a little mischief.</p>
-   </footer>
+    </nav>
+
+    <header class="hero" id="top">
+      <div class="inner hero-grid">
+        <div>
+          <span class="eyebrow">Small-batch · Low-waste · Local</span>
+          <h1>Hop Goblin Homestead</h1>
+          <p class="tagline">Small-batch goods, garden-grown magic, and practical homestead shenanigans.</p>
+          <p class="supporting">Refills, useful little goods, garden experiments, and low-waste swaps from a curious local homestead.</p>
+          <div class="actions" aria-label="Page shortcuts">
+            <a class="btn btn-primary" href="#on-the-table">See What’s Available</a>
+            <a class="btn btn-secondary" href="#how-it-works">How It Works</a>
+          </div>
+        </div>
+
+        <div class="market-scene" aria-label="CSS-only rustic market shelf illustration">
+          <div class="footprint">·· ··</div>
+          <div class="hop"></div>
+          <div class="shelf one"></div>
+          <div class="jar"></div>
+          <div class="bottle"></div>
+          <div class="mushroom"></div>
+          <div class="tiny-tag">table goods<br />+ tinkering</div>
+          <div class="shelf two"></div>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section id="how-it-works">
+        <div class="inner">
+          <div class="section-title">
+            <span class="section-kicker">Market table basics</span>
+            <h2>How It Works</h2>
+            <div class="divider" aria-hidden="true"></div>
+          </div>
+
+          <div class="steps">
+            <article class="card step-card">
+              <span class="step-num">1</span>
+              <h3>Bring a container or grab a jar</h3>
+              <p>Reuse what you have, or pick up a simple container at the table. No pressure either way.</p>
+            </article>
+
+            <article class="card step-card">
+              <span class="step-num">2</span>
+              <h3>Refill, shop, or ask questions</h3>
+              <p>Browse refill basics, garden goods, small-batch experiments, and practical little swaps. Everything is labeled, and questions are welcome.</p>
+            </article>
+
+            <article class="card step-card">
+              <span class="step-num">3</span>
+              <h3>Take home useful goods with less waste</h3>
+              <p>Simple swaps, local goods, and a little homestead magic without extra packaging.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section-alt" id="good-to-know">
+        <div class="inner">
+          <div class="section-title">
+            <span class="section-kicker">Pinned market notes</span>
+            <h2>Good to Know</h2>
+            <div class="divider" aria-hidden="true"></div>
+          </div>
+
+          <div class="faq-grid">
+            <article class="faq-item">
+              <strong class="faq-q">Do I need to bring my own container?</strong>
+              <p class="faq-a">No. Bringing your own is encouraged, but there will usually be jars or containers available.</p>
+            </article>
+
+            <article class="faq-item">
+              <strong class="faq-q">What kinds of products do you carry?</strong>
+              <p class="faq-a">Refill station basics, garden goods, mushrooms, herbs, jars, handmade items, and small-batch experiments.</p>
+            </article>
+
+            <article class="faq-item">
+              <strong class="faq-q">Are products available every week?</strong>
+              <p class="faq-a">Not always. Some items are regular staples, and others change with the season, the garden, and whatever experiment is currently behaving.</p>
+            </article>
+
+            <article class="faq-item">
+              <strong class="faq-q">How do refills work?</strong>
+              <p class="faq-a">Products are priced by volume. Bring a clean container, choose what you want, and pay for the amount filled.</p>
+            </article>
+
+            <article class="faq-item">
+              <strong class="faq-q">Where can I find you next?</strong>
+              <p class="faq-a">Check the Find Me section or follow social updates for current markets, pop-ups, and availability.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="on-the-table">
+        <div class="inner">
+          <div class="section-title">
+            <span class="section-kicker">Current table categories</span>
+            <h2>On the Table</h2>
+            <div class="divider" aria-hidden="true"></div>
+          </div>
+
+          <div class="products">
+            <article class="product-card">
+              <span class="product-label">by volume</span>
+              <h3>Refill Station</h3>
+              <p>Laundry, dish, hand, and Castile-style basics priced by the ounce. Bring your bottles or grab a jar.</p>
+              <p class="product-detail">Pricing: by volume</p>
+            </article>
+
+            <article class="product-card">
+              <span class="product-label">seasonal</span>
+              <h3>Mushrooms &amp; Garden</h3>
+              <p>Seasonal grow experiments, oyster kits, garden goods, compost starters, and plant-adjacent offerings.</p>
+              <p class="product-detail">Availability: varies weekly</p>
+            </article>
+
+            <article class="product-card">
+              <span class="product-label">rotating</span>
+              <h3>Homestead Goods</h3>
+              <p>Small useful goods, jars, handmade items, practical low-waste swaps, and curiosities from the workshop.</p>
+              <p class="product-detail">Availability: rotating staples</p>
+            </article>
+
+            <article class="product-card">
+              <span class="product-label">limited</span>
+              <h3>Brewing-Inspired Items</h3>
+              <p>Hop-forward experiments, spent-grain goods, brewing-adjacent products, and flavor collaborations.</p>
+              <p class="product-detail">Availability: limited batches</p>
+            </article>
+
+            <article class="product-card">
+              <span class="product-label">small batch</span>
+              <h3>Herbs &amp; Practical Wellness</h3>
+              <p>Dried blends, simple tinctures, tea mixes, herbal salts, and garden-grown herbal goods.</p>
+              <p class="product-detail">Availability: made in small batches</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section-alt" id="about">
+        <div class="inner">
+          <div class="section-title">
+            <span class="section-kicker">Dirt, curiosity, mischief</span>
+            <h2>About the Homestead</h2>
+            <div class="divider" aria-hidden="true"></div>
+          </div>
+
+          <div class="about-wrap">
+            <aside class="maker-mark" aria-label="Hop Goblin maker mark">
+              <div>
+                <strong>Useful little goods</strong>
+                <span>from the workshop table</span>
+              </div>
+            </aside>
+
+            <article class="card about-box">
+              <p>Hop Goblin Homestead is a small, curious operation run from a real homestead. It started with too many mushrooms, a soap experiment, and a hop vine that wouldn’t quit.</p>
+              <p>Everything here is made, grown, or sourced with intention: low-waste, practical, useful, and a little bit clever. No grand claims — just small-batch goods from someone who likes making things, solving problems, and sharing the results.</p>
+              <p>The goblin is mostly metaphorical. Mostly.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="find-me">
+        <div class="inner">
+          <div class="section-title">
+            <span class="section-kicker">Where the table appears</span>
+            <h2>Find Me</h2>
+            <div class="divider" aria-hidden="true"></div>
+          </div>
+
+          <div class="find-contact-grid">
+            <article class="chalkboard">
+              <h3>Upcoming Markets</h3>
+              <ul class="schedule">
+                <li><span>Next Market</span><span>Coming soon</span></li>
+                <li><span>Location</span><span>Hagerstown-area pop-ups and local events</span></li>
+                <li><span>Updates</span><span>Follow along for current availability</span></li>
+              </ul>
+              <p class="market-note">Inventory changes with the season, the experiments, and whatever the goblin has been tinkering with.</p>
+            </article>
+
+            <article class="card contact-card" id="contact">
+              <h3>Get in Touch</h3>
+              <p>Questions, refill requests, custom orders, or market availability?</p>
+              <ul class="contact-list">
+                <li>hello@hopgoblinhomestead.com</li>
+                <li>DM on socials anytime</li>
+              </ul>
+              <div class="form-preview" aria-label="Contact form placeholder">
+                <div class="field">Name</div>
+                <div class="field">Email</div>
+                <div class="field message">Message</div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <strong>Hop Goblin Homestead</strong>
+      <p>Small-batch · Garden-grown · Low-waste</p>
+      <p>Made with dirt, curiosity, and a little mischief.</p>
+    </footer>
   </div>
-  <script>
-// FAQ accordion
-document.querySelectorAll('.faq-q').forEach(q => {
-  q.addEventListener('click', () => {
-    q.parentElement.classList.toggle('open');
-  });
-});
-
-// Element SDK
-const defaultConfig = {
-  hero_title: 'Hop Goblin Homestead',
-  hero_tagline: 'Small-batch goods, garden-grown magic, and practical homestead shenanigans.',
-  hero_supporting: 'Refills, useful little goods, garden experiments, and low-waste swaps from a curious local homestead.',
-  background_color: '#f5f0e8',
-  surface_color: '#faf7f0',
-  text_color: '#2d2a26',
-  primary_color: '#6b8f4a',
-  accent_color: '#3a3530',
-  font_family: 'Georgia',
-  font_size: 16
-};
-
-function applyConfig(config) {
-  document.getElementById('heroTitle').textContent = config.hero_title || defaultConfig.hero_title;
-  document.getElementById('heroTagline').textContent = config.hero_tagline || defaultConfig.hero_tagline;
-  document.getElementById('heroSupporting').textContent = config.hero_supporting || defaultConfig.hero_supporting;
-
-  const bg = config.background_color || defaultConfig.background_color;
-  const surface = config.surface_color || defaultConfig.surface_color;
-  const text = config.text_color || defaultConfig.text_color;
-  const primary = config.primary_color || defaultConfig.primary_color;
-  const accent = config.accent_color || defaultConfig.accent_color;
-  const font = config.font_family || defaultConfig.font_family;
-  const size = config.font_size || defaultConfig.font_size;
-
-  document.body.style.background = bg;
-  document.body.style.color = text;
-  document.body.style.fontFamily = `${font}, Georgia, serif`;
-  document.body.style.fontSize = size + 'px';
-
-  document.querySelectorAll('.step-card, .about-box, .info-card').forEach(el => el.style.background = surface);
-  document.querySelectorAll('.btn-primary, .step-num').forEach(el => el.style.background = primary);
-  document.querySelectorAll('nav, .product-card, footer').forEach(el => el.style.background = accent);
-}
-
-if (window.elementSdk) {
-  window.elementSdk.init({
-    defaultConfig,
-    onConfigChange: async (config) => applyConfig(config),
-    mapToCapabilities: (config) => ({
-      recolorables: [
-        { get: () => config.background_color || defaultConfig.background_color, set: (v) => { config.background_color = v; window.elementSdk.setConfig({ background_color: v }); } },
-        { get: () => config.surface_color || defaultConfig.surface_color, set: (v) => { config.surface_color = v; window.elementSdk.setConfig({ surface_color: v }); } },
-        { get: () => config.text_color || defaultConfig.text_color, set: (v) => { config.text_color = v; window.elementSdk.setConfig({ text_color: v }); } },
-        { get: () => config.primary_color || defaultConfig.primary_color, set: (v) => { config.primary_color = v; window.elementSdk.setConfig({ primary_color: v }); } },
-        { get: () => config.accent_color || defaultConfig.accent_color, set: (v) => { config.accent_color = v; window.elementSdk.setConfig({ accent_color: v }); } }
-      ],
-      borderables: [],
-      fontEditable: { get: () => config.font_family || defaultConfig.font_family, set: (v) => { config.font_family = v; window.elementSdk.setConfig({ font_family: v }); } },
-      fontSizeable: { get: () => config.font_size || defaultConfig.font_size, set: (v) => { config.font_size = v; window.elementSdk.setConfig({ font_size: v }); } }
-    }),
-    mapToEditPanelValues: (config) => new Map([
-      ['hero_title', config.hero_title || defaultConfig.hero_title],
-      ['hero_tagline', config.hero_tagline || defaultConfig.hero_tagline],
-      ['hero_supporting', config.hero_supporting || defaultConfig.hero_supporting]
-    ])
-  });
-}
-</script>
- </body>
+</body>
 </html>
