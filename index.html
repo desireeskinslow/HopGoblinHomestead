@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Hop Goblin Homestead offers small-batch goods, garden-grown magic, practical homestead shenanigans, refills, useful little goods, and low-waste swaps." />
-  <title>Hop Goblin Homestead</title>
+  <meta name="description" content="Hop Goblin Homestead: Small-batch goods, mushroom kits, herbal blends, and zero-waste refills from a practical homestead. Launching at Hagerstown-area markets Summer 2026." />
+  <title>Hop Goblin Homestead • Local, Handmade, Low-Waste</title>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -20,6 +20,7 @@
       --brown: #7b6245;
       --gold: #c0a458;
       --shadow: rgba(45, 42, 38, 0.18);
+      --light-green: #f0f5eb;
     }
 
     html { scroll-behavior: smooth; }
@@ -48,7 +49,8 @@
       mix-blend-mode: multiply;
     }
 
-    a { color: inherit; }
+    a { color: inherit; text-decoration: none; }
+    a:hover { opacity: 0.8; }
 
     .page { position: relative; z-index: 1; }
 
@@ -91,8 +93,7 @@
       transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
     }
 
-    .nav a:hover,
-    .nav a:focus-visible {
+    .nav a:hover, .nav a:focus-visible {
       background: var(--hop);
       color: var(--charcoal);
       transform: translateY(-2px);
@@ -100,24 +101,18 @@
       outline: none;
     }
 
-    header, section { padding: 4rem 1.25rem; }
-
-    .inner {
-      width: min(1120px, 100%);
-      margin: 0 auto;
-    }
-
+    /* Hero Section */
     .hero {
       position: relative;
-      min-height: 78vh;
+      min-height: 70vh;
       display: grid;
       place-items: center;
       border-bottom: 3px dashed rgba(95, 127, 67, 0.6);
       overflow: hidden;
+      padding: 3rem 1.25rem;
     }
 
-    .hero::before,
-    .hero::after {
+    .hero::before, .hero::after {
       content: "";
       position: absolute;
       border-radius: 50%;
@@ -133,28 +128,13 @@
       grid-template-columns: minmax(0, 1.1fr) minmax(18rem, 0.9fr);
       gap: clamp(2rem, 5vw, 4rem);
       align-items: center;
+      width: min(1120px, 100%);
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
     }
 
-    .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.55rem;
-      margin-bottom: 1.1rem;
-      padding: 0.45rem 0.75rem;
-      background: rgba(255, 249, 236, 0.72);
-      border: 1px dashed rgba(123, 98, 69, 0.45);
-      border-radius: 999px;
-      color: var(--brown);
-      font: 700 0.78rem/1 "Courier New", monospace;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      box-shadow: 2px 2px 0 rgba(216, 198, 162, 0.8);
-    }
-
-    .eyebrow::before,
-    .eyebrow::after { content: "✦"; color: var(--moss); }
-
-    h1 {
+    .hero-content h1 {
       font-size: clamp(2.65rem, 7vw, 5.7rem);
       line-height: 0.92;
       letter-spacing: -0.05em;
@@ -162,28 +142,32 @@
       color: var(--charcoal);
       text-wrap: balance;
       text-shadow: 2px 2px 0 rgba(216, 198, 162, 0.55);
+      margin-bottom: 1rem;
     }
 
-    .tagline {
-      margin-top: 1.1rem;
-      color: var(--moss);
+    .hero-tagline {
       font-size: clamp(1.1rem, 2.2vw, 1.45rem);
       font-style: italic;
+      color: var(--moss);
+      margin-bottom: 1.5rem;
       max-width: 42rem;
     }
 
-    .supporting {
-      margin-top: 1rem;
-      max-width: 38rem;
-      color: #65594b;
-      font: 400 0.98rem/1.8 "Courier New", monospace;
+    .hero-launch {
+      background: var(--light-green);
+      border-left: 4px solid var(--moss);
+      padding: 1rem 1.25rem;
+      border-radius: 0.5rem;
+      margin-bottom: 1.5rem;
+      font: 500 0.95rem/1.5 "Courier New", monospace;
+      color: var(--charcoal);
     }
 
-    .actions {
+    .hero-cta {
       display: flex;
       flex-wrap: wrap;
-      gap: 0.8rem;
-      margin-top: 1.6rem;
+      gap: 1rem;
+      margin-top: 1.5rem;
     }
 
     .btn {
@@ -199,10 +183,13 @@
       text-transform: uppercase;
       letter-spacing: 0.06em;
       transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+      cursor: pointer;
+      background: none;
     }
 
     .btn:hover { transform: translateY(-2px); box-shadow: 4px 5px 0 rgba(45, 42, 38, 0.14); }
-    .btn-primary { background: var(--moss); color: #fffdf5; }
+    .btn-primary { background: var(--moss); color: #fffdf5; border-color: var(--moss); }
+    .btn-primary:hover { background: #4f6b35; }
     .btn-secondary { background: var(--paper); color: var(--charcoal); border-style: dashed; }
 
     .market-scene {
@@ -219,7 +206,6 @@
       place-items: center;
     }
 
-    /* Modern Market Stand Illustration */
     .market-stall {
       position: relative;
       width: 100%;
@@ -230,7 +216,6 @@
       padding: 2rem;
     }
 
-    /* Market table base */
     .stall-table {
       position: relative;
       width: 85%;
@@ -241,9 +226,7 @@
       border: 2px solid #6b5a4d;
     }
 
-    /* Table legs */
-    .stall-table::before,
-    .stall-table::after {
+    .stall-table::before, .stall-table::after {
       content: "";
       position: absolute;
       bottom: -12px;
@@ -256,7 +239,6 @@
     .stall-table::before { left: 8%; }
     .stall-table::after { right: 8%; }
 
-    /* Product display areas */
     .product-group {
       position: absolute;
       bottom: 0;
@@ -270,7 +252,6 @@
     .product-group.center { left: 50%; transform: translateX(-50%); width: 28%; }
     .product-group.right { right: 8%; width: 28%; }
 
-    /* Bottle style products */
     .bottle-product {
       width: 20%;
       height: 60%;
@@ -295,9 +276,7 @@
     .bottle-2 { background: linear-gradient(90deg, var(--kraft) 0%, var(--gold) 100%); }
     .bottle-3 { background: linear-gradient(90deg, #c8a882 0%, #a67c52 100%); }
     .bottle-4 { background: linear-gradient(90deg, var(--hop) 0%, var(--sage) 100%); }
-    .bottle-5 { background: linear-gradient(90deg, #d4b59f 0%, #b8956a 100%); }
 
-    /* Jar products */
     .jar-product {
       width: 24%;
       height: 55%;
@@ -319,7 +298,6 @@
       border-radius: 3px 3px 0 0;
     }
 
-    /* Accent plant/hop illustration */
     .accent-plant {
       position: absolute;
       top: 5%;
@@ -352,7 +330,6 @@
     .plant-leaf:nth-child(3) { top: 30%; transform: translateX(-50%) rotate(-20deg); }
     .plant-leaf:nth-child(4) { top: 45%; transform: translateX(-50%) rotate(20deg); }
 
-    /* Decorative elements */
     .market-sign {
       position: absolute;
       top: 8%;
@@ -371,9 +348,66 @@
       box-shadow: 2px 2px 0 rgba(45, 42, 38, 0.15);
     }
 
-    .market-sign::before {
-      content: "Fresh";
-      display: block;
+    .market-sign::before { content: "Fresh"; display: block; }
+
+    /* Newsletter Section */
+    .newsletter {
+      padding: 3rem 1.25rem;
+      background: rgba(232, 220, 196, 0.35);
+      border-top: 3px dashed var(--sage);
+      border-bottom: 3px dashed var(--sage);
+    }
+
+    .newsletter-inner {
+      width: min(800px, 100%);
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .newsletter h2 {
+      font-size: clamp(1.8rem, 4vw, 2.5rem);
+      color: var(--charcoal);
+      margin-bottom: 0.5rem;
+    }
+
+    .newsletter-copy {
+      font-size: 1rem;
+      color: #625747;
+      margin-bottom: 1.5rem;
+      font: 400 1rem/1.6 "Courier New", monospace;
+    }
+
+    .newsletter-form {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      justify-content: center;
+    }
+
+    .newsletter-form input {
+      min-width: 280px;
+      padding: 0.9rem 1rem;
+      border: 2px dashed rgba(123, 98, 69, 0.45);
+      border-radius: 0.5rem;
+      background: rgba(255, 249, 236, 0.9);
+      font: 400 0.95rem/1 "Courier New", monospace;
+      color: var(--charcoal);
+    }
+
+    .newsletter-form input::placeholder { color: #999; }
+
+    .newsletter-form input:focus {
+      outline: none;
+      border-color: var(--moss);
+      box-shadow: 0 0 0 2px rgba(95, 127, 67, 0.1);
+    }
+
+    /* Sections */
+    section { padding: 4rem 1.25rem; }
+
+    .inner {
+      width: min(1120px, 100%);
+      margin: 0 auto;
     }
 
     .section-title {
@@ -413,154 +447,74 @@
       border-block: 2px dashed rgba(123, 98, 69, 0.34);
     }
 
-    .steps {
+    /* Service/Product Cards */
+    .services {
       display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 1.2rem;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 2rem;
     }
 
-    .card {
-      position: relative;
+    .service-card {
       background: var(--paper);
       border: 2px dashed rgba(123, 98, 69, 0.45);
       border-radius: 1.1rem;
+      padding: 2rem 1.5rem;
       box-shadow: 5px 6px 0 rgba(216, 198, 162, 0.72);
-    }
-
-    .step-card {
-      padding: 2rem 1.4rem 1.45rem;
-      min-height: 100%;
-      transform: rotate(var(--tilt, 0deg));
       transition: transform 0.2s ease, box-shadow 0.2s ease;
+      display: flex;
+      flex-direction: column;
     }
 
-    .step-card:hover { transform: rotate(0deg) translateY(-3px); box-shadow: 7px 8px 0 rgba(216, 198, 162, 0.9); }
-    .step-card:nth-child(1) { --tilt: -1deg; }
-    .step-card:nth-child(2) { --tilt: 0.8deg; }
-    .step-card:nth-child(3) { --tilt: -0.4deg; }
+    .service-card:hover { transform: translateY(-4px); box-shadow: 7px 8px 0 rgba(216, 198, 162, 0.9); }
 
-    .step-num {
-      position: absolute;
-      top: -1rem;
-      left: 1.2rem;
-      display: grid;
-      place-items: center;
-      width: 2.25rem;
-      height: 2.25rem;
-      border-radius: 999px;
-      background: var(--moss);
-      color: white;
-      font: 700 1rem/1 "Courier New", monospace;
-      box-shadow: 2px 2px 0 rgba(45, 42, 38, 0.15);
+    .service-icon {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
     }
 
-    h3 {
+    .service-card h3 {
       color: var(--charcoal);
-      font-size: 1.18rem;
-      line-height: 1.18;
-      margin-bottom: 0.65rem;
+      font-size: 1.3rem;
+      margin-bottom: 0.75rem;
     }
 
-    .card p,
-    .faq-a,
-    .market-note,
-    .contact-card p,
-    .schedule li {
+    .service-card p {
       color: #625747;
-      font: 400 0.9rem/1.65 "Courier New", monospace;
+      font: 400 0.95rem/1.65 "Courier New", monospace;
+      margin-bottom: 1rem;
+      flex-grow: 1;
     }
 
-    .faq-grid {
-      display: grid;
-      grid-template-columns: repeat(5, minmax(0, 1fr));
-      gap: 1rem;
+    .service-items {
+      border-top: 1px dashed rgba(123, 98, 69, 0.3);
+      padding-top: 1rem;
+      font: 400 0.85rem/1.6 "Courier New", monospace;
+      color: #7b6245;
     }
 
-    .faq-item {
-      min-height: 100%;
-      padding: 1.1rem;
-      background: var(--paper);
-      border: 1px solid rgba(123, 98, 69, 0.28);
-      border-left: 5px solid var(--moss);
-      border-radius: 0.6rem;
-      box-shadow: 3px 4px 0 rgba(216, 198, 162, 0.75);
-    }
-
-    .faq-q {
-      display: block;
-      margin-bottom: 0.45rem;
-      color: var(--charcoal);
-      font-size: 0.95rem;
-      line-height: 1.2;
-    }
-
-    .products {
-      display: grid;
-      grid-template-columns: repeat(5, minmax(0, 1fr));
-      gap: 1rem;
-      align-items: stretch;
-    }
-
-    .product-card {
+    .service-items li {
+      list-style: none;
+      padding-left: 1.25rem;
       position: relative;
-      padding: 1.1rem;
-      min-height: 100%;
-      background:
-        linear-gradient(180deg, rgba(56, 51, 45, 0.98), rgba(45, 42, 38, 0.98)),
-        repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.04) 0 1px, transparent 1px 5px);
-      color: var(--cream);
-      border-radius: 1rem;
-      border: 1px solid rgba(167, 199, 113, 0.25);
-      box-shadow: 0 0.9rem 2rem rgba(45, 42, 38, 0.18);
-      overflow: hidden;
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
 
-    .product-card::before {
-      content: "";
+    .service-items li::before {
+      content: "↦";
       position: absolute;
-      inset: 0.55rem;
-      border: 1px dashed rgba(167, 199, 113, 0.34);
-      border-radius: 0.65rem;
-      pointer-events: none;
+      left: 0;
+      color: var(--moss);
     }
 
-    .product-card:hover { transform: translateY(-4px); box-shadow: 0 1.2rem 2.2rem rgba(45, 42, 38, 0.24); }
-
-    .product-label {
-      position: relative;
-      display: inline-block;
-      margin-bottom: 0.85rem;
-      padding: 0.23rem 0.4rem;
-      color: var(--charcoal);
-      background: var(--kraft);
-      border: 1px dashed rgba(56, 51, 45, 0.35);
-      border-radius: 0.3rem;
-      font: 700 0.62rem/1 "Courier New", monospace;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-    }
-
-    .product-card h3 { color: var(--hop); font-size: 1.05rem; }
-    .product-card p { color: #eadfc9; font: 400 0.82rem/1.62 "Courier New", monospace; }
-
-    .product-detail {
-      position: relative;
-      margin-top: 0.85rem;
-      padding-top: 0.7rem;
-      border-top: 1px dashed rgba(167, 199, 113, 0.34);
-      color: #b6c8a0;
-      font: 700 0.72rem/1.35 "Courier New", monospace;
-    }
-
-    .about-wrap {
+    /* About/Founder Section */
+    .founder-section {
       display: grid;
       grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
-      gap: 1.5rem;
-      align-items: stretch;
+      gap: 2rem;
+      align-items: center;
     }
 
-    .maker-mark {
+    .founder-mark {
       display: grid;
       place-items: center;
       min-height: 100%;
@@ -573,7 +527,7 @@
       text-align: center;
     }
 
-    .maker-mark strong {
+    .founder-mark strong {
       display: block;
       max-width: 10ch;
       font-size: clamp(2rem, 5vw, 3.6rem);
@@ -582,7 +536,7 @@
       text-shadow: 2px 2px 0 rgba(95, 127, 67, 0.5);
     }
 
-    .maker-mark span {
+    .founder-mark span {
       margin-top: 1rem;
       color: var(--hop);
       font: 700 0.8rem/1.5 "Courier New", monospace;
@@ -590,13 +544,73 @@
       letter-spacing: 0.1em;
     }
 
-    .about-box {
-      padding: 1.7rem;
+    .founder-text {
+      background: var(--paper);
+      border: 2px dashed rgba(123, 98, 69, 0.45);
+      border-radius: 1.1rem;
+      padding: 2rem 1.5rem;
+      box-shadow: 5px 6px 0 rgba(216, 198, 162, 0.72);
     }
 
-    .about-box p { margin-bottom: 1rem; }
-    .about-box p:last-child { margin-bottom: 0; font-style: italic; color: var(--moss); }
+    .founder-text h3 {
+      color: var(--charcoal);
+      font-size: 1.4rem;
+      margin-bottom: 1rem;
+    }
 
+    .founder-text p {
+      color: #625747;
+      font: 400 0.95rem/1.75 "Courier New", monospace;
+      margin-bottom: 1rem;
+    }
+
+    .founder-text p:last-child {
+      font-style: italic;
+      color: var(--moss);
+      margin-bottom: 0;
+    }
+
+    /* Experiments/Brewing Section */
+    .experiments {
+      background: rgba(95, 127, 67, 0.08);
+      border-radius: 1.2rem;
+      padding: 2rem;
+      border: 2px solid rgba(95, 127, 67, 0.3);
+    }
+
+    .experiments h3 {
+      color: var(--charcoal);
+      font-size: 1.3rem;
+      margin-bottom: 1rem;
+    }
+
+    .experiments-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+    }
+
+    .experiment-item {
+      background: rgba(255, 255, 255, 0.6);
+      border-left: 4px solid var(--moss);
+      padding: 1rem;
+      border-radius: 0.5rem;
+    }
+
+    .experiment-item strong {
+      color: var(--charcoal);
+      display: block;
+      margin-bottom: 0.35rem;
+      font: 600 0.95rem/1 "Courier New", monospace;
+    }
+
+    .experiment-item p {
+      color: #7b6245;
+      font: 400 0.85rem/1.5 "Courier New", monospace;
+      margin: 0;
+    }
+
+    /* Market Info Section */
     .find-contact-grid {
       display: grid;
       grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
@@ -615,11 +629,10 @@
       box-shadow: 6px 8px 0 rgba(45, 42, 38, 0.15), inset 0 0 0 2px rgba(255, 255, 255, 0.08);
     }
 
-    .chalkboard h3,
-    .chalkboard .schedule li { color: var(--cream); }
+    .chalkboard h3 { color: var(--cream); margin-bottom: 1.5rem; }
 
     .schedule {
-      margin: 1rem 0;
+      margin: 0;
       list-style: none;
       font-family: "Courier New", monospace;
     }
@@ -628,28 +641,42 @@
       display: flex;
       justify-content: space-between;
       gap: 1rem;
-      padding: 0.72rem 0;
+      padding: 0.75rem 0;
       border-bottom: 1px dashed rgba(247, 241, 228, 0.32);
     }
 
-    .schedule span:first-child { color: var(--hop); font-weight: 700; }
+    .schedule li:last-child { border-bottom: none; }
+
+    .schedule span:first-child { color: var(--hop); font-weight: 700; font-size: 0.9rem; }
+    .schedule span:last-child { color: #e8dcc8; font-size: 0.9rem; }
 
     .market-note {
-      margin-top: 1rem;
+      margin-top: 1.5rem;
       color: #d9e4c4;
+      font: 400 0.9rem/1.6 "Courier New", monospace;
     }
 
     .contact-card {
       padding: 1.5rem;
+      background: var(--paper);
+      border: 2px dashed rgba(123, 98, 69, 0.45);
+      border-radius: 1.1rem;
+      box-shadow: 5px 6px 0 rgba(216, 198, 162, 0.72);
+    }
+
+    .contact-card h3 { color: var(--charcoal); margin-bottom: 1rem; }
+
+    .contact-card p {
+      color: #625747;
+      font: 400 0.95rem/1.65 "Courier New", monospace;
+      margin-bottom: 1.25rem;
     }
 
     .contact-list {
       display: grid;
       gap: 0.6rem;
-      margin: 1rem 0;
+      margin-bottom: 1.5rem;
       list-style: none;
-      color: #625747;
-      font: 700 0.92rem/1.45 "Courier New", monospace;
     }
 
     .contact-list li {
@@ -657,28 +684,40 @@
       background: rgba(216, 198, 162, 0.26);
       border-radius: 0.65rem;
       border: 1px dashed rgba(123, 98, 69, 0.28);
+      font: 600 0.92rem/1.4 "Courier New", monospace;
+      color: #625747;
     }
 
-    .form-preview {
-      display: grid;
-      gap: 0.7rem;
+    .social-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
       margin-top: 1rem;
     }
 
-    .field {
-      min-height: 2.7rem;
-      padding: 0.75rem;
-      border: 1px dashed rgba(123, 98, 69, 0.45);
-      border-radius: 0.7rem;
-      background: rgba(255, 249, 236, 0.75);
-      color: #7b6c59;
-      font: 400 0.82rem/1 "Courier New", monospace;
+    .social-links a {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.6rem 1rem;
+      background: rgba(95, 127, 67, 0.15);
+      border: 1px solid var(--moss);
+      border-radius: 0.5rem;
+      color: var(--moss);
+      font: 600 0.85rem/1 "Courier New", monospace;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      transition: all 0.2s ease;
     }
 
-    .field.message { min-height: 5rem; }
+    .social-links a:hover {
+      background: var(--moss);
+      color: white;
+    }
 
+    /* Footer */
     footer {
-      padding: 2rem 1rem;
+      padding: 2.5rem 1rem;
       background: var(--charcoal);
       color: #d4c6aa;
       text-align: center;
@@ -688,34 +727,49 @@
 
     footer strong {
       display: block;
-      margin-bottom: 0.3rem;
+      margin-bottom: 0.5rem;
       color: var(--hop);
       font-size: 0.9rem;
       letter-spacing: 0.08em;
       text-transform: uppercase;
     }
 
+    footer p { margin-bottom: 0.5rem; }
+
+    .footer-links {
+      margin-top: 1rem;
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      color: #d4c6aa;
+      transition: color 0.2s ease;
+    }
+
+    .footer-links a:hover { color: var(--hop); }
+
+    /* Responsive */
     @media (max-width: 980px) {
-      .hero-grid,
-      .about-wrap,
+      .hero-grid { grid-template-columns: 1fr; }
+      .founder-section { grid-template-columns: 1fr; }
       .find-contact-grid { grid-template-columns: 1fr; }
-      h1 { max-width: 11ch; }
-      .market-scene { min-height: 22rem; }
-      .steps { grid-template-columns: 1fr; }
-      .faq-grid,
-      .products { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .services { grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); }
     }
 
     @media (max-width: 640px) {
-      header, section { padding: 3rem 1rem; }
+      header, section { padding: 2.5rem 1rem; }
       .nav ul { justify-content: flex-start; overflow-x: auto; flex-wrap: nowrap; }
       .hero { min-height: auto; }
-      .hero-grid { gap: 2.2rem; }
-      .market-scene { min-height: 18.5rem; border-radius: 1.4rem; }
-      .faq-grid,
-      .products { grid-template-columns: 1fr; }
+      .hero-cta { flex-direction: column; }
+      .btn { width: 100%; }
+      .newsletter-form { flex-direction: column; }
+      .newsletter-form input { min-width: 100%; }
       .schedule li { display: block; }
-      .schedule span { display: block; }
+      .schedule span { display: block; margin-bottom: 0.4rem; }
+      .footer-links { gap: 1rem; font-size: 0.75rem; }
     }
   </style>
 </head>
@@ -723,22 +777,28 @@
   <div class="page">
     <nav class="nav" aria-label="Primary navigation">
       <ul>
-        <li><a href="#how-it-works">How It Works</a></li>
-        <li><a href="#good-to-know">Good to Know</a></li>
-        <li><a href="#on-the-table">On the Table</a></li>
+        <li><a href="#services">What We Offer</a></li>
+        <li><a href="#experiments">Currently Brewing</a></li>
         <li><a href="#about">About</a></li>
-        <li><a href="#find-me">Find Me</a></li>
+        <li><a href="#markets">Find Me</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
     </nav>
 
     <header class="hero" id="top">
-      <div class="inner hero-grid">
-        <div>
-          <span class="eyebrow">Small-batch · Low-waste · Local</span>
+      <div class="hero-grid">
+        <div class="hero-content">
           <h1>Hop Goblin Homestead</h1>
-          <p class="tagline">Small-batch goods, garden-grown magic, and practical homestead shenanigans.</p>
-          <p class="supporting">Refills, useful little goods, garden experiments, and low-waste swaps from a curious local homestead.</p>
+          <p class="hero-tagline">Small-batch goods, mushroom kits, herbal blends, and zero-waste refills from a curious homestead.</p>
+          
+          <div class="hero-launch">
+            🌱 <strong>Launching at Hagerstown-area markets Summer 2026</strong> — Join the mailing list to stay in the loop.
+          </div>
+
+          <div class="hero-cta">
+            <a href="#contact" class="btn btn-primary">See What's on the Table</a>
+            <a href="#markets" class="btn btn-secondary">Find Upcoming Markets</a>
+          </div>
         </div>
 
         <div class="market-scene" aria-label="Modern market stall illustration with products">
@@ -771,176 +831,205 @@
       </div>
     </header>
 
+    <!-- Newsletter Section -->
+    <section class="newsletter">
+      <div class="newsletter-inner">
+        <h2>Get Market Updates & Restocks</h2>
+        <p class="newsletter-copy">Be the first to know about new products, seasonal releases, and where to find us.</p>
+        <form class="newsletter-form" action="#" method="POST">
+          <input type="email" placeholder="your@email.com" required aria-label="Email address" />
+          <button type="submit" class="btn btn-primary">Join the List</button>
+        </form>
+      </div>
+    </section>
+
     <main>
-      <section id="how-it-works">
+      <!-- Services/Products Section -->
+      <section id="services">
         <div class="inner">
           <div class="section-title">
-            <span class="section-kicker">Market table basics</span>
-            <h2>How It Works</h2>
+            <span class="section-kicker">What's on the table</span>
+            <h2>What We Offer</h2>
             <div class="divider" aria-hidden="true"></div>
           </div>
 
-          <div class="steps">
-            <article class="card step-card">
-              <span class="step-num">1</span>
-              <h3>Bring a container or grab a jar</h3>
-              <p>Reuse what you have, or pick up a simple container at the table. No pressure either way.</p>
-            </article>
-
-            <article class="card step-card">
-              <span class="step-num">2</span>
-              <h3>Refill, shop, or ask questions</h3>
-              <p>Browse refill basics, garden goods, small-batch experiments, and practical little swaps. Everything is labeled, and questions are welcome.</p>
-            </article>
-
-            <article class="card step-card">
-              <span class="step-num">3</span>
-              <h3>Take home useful goods with less waste</h3>
-              <p>Simple swaps, local goods, and a little homestead magic without extra packaging.</p>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section class="section-alt" id="good-to-know">
-        <div class="inner">
-          <div class="section-title">
-            <span class="section-kicker">Pinned market notes</span>
-            <h2>Good to Know</h2>
-            <div class="divider" aria-hidden="true"></div>
-          </div>
-
-          <div class="faq-grid">
-            <article class="faq-item">
-              <strong class="faq-q">Do I need to bring my own container?</strong>
-              <p class="faq-a">No. Bringing your own is encouraged, but there will usually be jars or containers available.</p>
-            </article>
-
-            <article class="faq-item">
-              <strong class="faq-q">What kinds of products do you carry?</strong>
-              <p class="faq-a">Refill station basics, garden goods, mushrooms, herbs, jars, handmade items, and small-batch experiments.</p>
-            </article>
-
-            <article class="faq-item">
-              <strong class="faq-q">Are products available every week?</strong>
-              <p class="faq-a">Not always. Some items are regular staples, and others change with the season, the garden, and whatever experiment is currently behaving.</p>
-            </article>
-
-            <article class="faq-item">
-              <strong class="faq-q">How do refills work?</strong>
-              <p class="faq-a">Products are priced by volume. Bring a clean container, choose what you want, and pay for the amount filled.</p>
-            </article>
-
-            <article class="faq-item">
-              <strong class="faq-q">Where can I find you next?</strong>
-              <p class="faq-a">Check the Find Me section or follow social updates for current markets, pop-ups, and availability.</p>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section id="on-the-table">
-        <div class="inner">
-          <div class="section-title">
-            <span class="section-kicker">Current table categories</span>
-            <h2>On the Table</h2>
-            <div class="divider" aria-hidden="true"></div>
-          </div>
-
-          <div class="products">
-            <article class="product-card">
-              <span class="product-label">by volume</span>
+          <div class="services">
+            <article class="service-card">
+              <div class="service-icon">🧴</div>
               <h3>Refill Station</h3>
-              <p>Laundry, dish, hand, and Castile-style basics priced by the ounce. Bring your bottles or grab a jar.</p>
-              <p class="product-detail">Pricing: by volume</p>
+              <p>Zero-waste basics by the ounce. Bring your bottles or grab a jar.</p>
+              <ul class="service-items">
+                <li>Laundry soap</li>
+                <li>Dish soap</li>
+                <li>Hand wash</li>
+                <li>Castile concentrate</li>
+              </ul>
             </article>
 
-            <article class="product-card">
-              <span class="product-label">seasonal</span>
-              <h3>Mushrooms &amp; Garden</h3>
-              <p>Seasonal grow experiments, oyster kits, garden goods, compost starters, and plant-adjacent offerings.</p>
-              <p class="product-detail">Availability: varies weekly</p>
+            <article class="service-card">
+              <div class="service-icon">🍄</div>
+              <h3>Mushrooms & Gardening</h3>
+              <p>Seasonal grow kits and garden goods for curious growers.</p>
+              <ul class="service-items">
+                <li>Lion's mane kits</li>
+                <li>Oyster grow kits</li>
+                <li>Worm castings</li>
+                <li>Compost starters</li>
+              </ul>
             </article>
 
-            <article class="product-card">
-              <span class="product-label">rotating</span>
-              <h3>Homestead Goods</h3>
-              <p>Small useful goods, jars, handmade items, practical low-waste swaps, and curiosities from the workshop.</p>
-              <p class="product-detail">Availability: rotating staples</p>
+            <article class="service-card">
+              <div class="service-icon">🌿</div>
+              <h3>Herbal Goods</h3>
+              <p>Garden-grown dried blends, teas, and herbal wellness.</p>
+              <ul class="service-items">
+                <li>Tea blends</li>
+                <li>Herbal salts</li>
+                <li>Tinctures</li>
+                <li>Wellness blends</li>
+              </ul>
             </article>
 
-            <article class="product-card">
-              <span class="product-label">limited</span>
-              <h3>Brewing-Inspired Items</h3>
-              <p>Hop-forward experiments, spent-grain goods, brewing-adjacent products, and flavor collaborations.</p>
-              <p class="product-detail">Availability: limited batches</p>
+            <article class="service-card">
+              <div class="service-icon">🍺</div>
+              <h3>Brewing-Inspired</h3>
+              <p>Hop-forward experiments and spent-grain creations.</p>
+              <ul class="service-items">
+                <li>Spent grain treats</li>
+                <li>Hop blends</li>
+                <li>Brewing collaborations</li>
+                <li>Small batches</li>
+              </ul>
             </article>
 
-            <article class="product-card">
-              <span class="product-label">small batch</span>
-              <h3>Herbs &amp; Practical Wellness</h3>
-              <p>Dried blends, simple tinctures, tea mixes, herbal salts, and garden-grown herbal goods.</p>
-              <p class="product-detail">Availability: made in small batches</p>
+            <article class="service-card">
+              <div class="service-icon">♻️</div>
+              <h3>Compost & Soil</h3>
+              <p>Black gold for your garden from our composting operation.</p>
+              <ul class="service-items">
+                <li>Ready compost</li>
+                <li>Soil blends</li>
+                <li>Growing medium</li>
+                <li>Garden inputs</li>
+              </ul>
+            </article>
+
+            <article class="service-card">
+              <div class="service-icon">🎁</div>
+              <h3>Practical Goods</h3>
+              <p>Handmade items and useful swaps from the workshop.</p>
+              <ul class="service-items">
+                <li>Jars & containers</li>
+                <li>Handmade items</li>
+                <li>Low-waste swaps</li>
+                <li>Workshop goods</li>
+              </ul>
             </article>
           </div>
         </div>
       </section>
 
-      <section class="section-alt" id="about">
+      <!-- Currently Brewing Section -->
+      <section class="section-alt" id="experiments">
         <div class="inner">
           <div class="section-title">
-            <span class="section-kicker">Dirt, curiosity, mischief</span>
+            <span class="section-kicker">What's cooking</span>
+            <h2>Currently Brewing</h2>
+            <div class="divider" aria-hidden="true"></div>
+          </div>
+
+          <div class="experiments">
+            <h3>🧪 This Season's Experiments</h3>
+            <div class="experiments-list">
+              <div class="experiment-item">
+                <strong>Shiitake Log Project</strong>
+                <p>Indoor growing experimentation. Ready for early summer testing.</p>
+              </div>
+              <div class="experiment-item">
+                <strong>Herbal Tea Collaboration</strong>
+                <p>Local herb blends with a neighboring farm. Limited first batch.</p>
+              </div>
+              <div class="experiment-item">
+                <strong>Spent Grain Dog Treats</strong>
+                <p>Brewing byproduct becomes something useful. Beta testing now.</p>
+              </div>
+              <div class="experiment-item">
+                <strong>Hop Vinegar Infusions</strong>
+                <p>Slow-fermented vinegar with homestead hops. 2026 release.</p>
+              </div>
+            </div>
+            <p style="margin-top: 1.5rem; color: #7b6245; font-size: 0.9rem; font-style: italic;">
+              💡 <strong>The goblin is always tinkering.</strong> Not everything works. Some experiments become products. Some become lessons. All are part of the process.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- About Section -->
+      <section id="about">
+        <div class="inner">
+          <div class="section-title">
+            <span class="section-kicker">The story</span>
             <h2>About the Homestead</h2>
             <div class="divider" aria-hidden="true"></div>
           </div>
 
-          <div class="about-wrap">
-            <aside class="maker-mark" aria-label="Hop Goblin maker mark">
+          <div class="founder-section">
+            <aside class="founder-mark" aria-label="Hop Goblin maker mark">
               <div>
-                <strong>Useful little goods</strong>
-                <span>from the workshop table</span>
+                <strong>Practical magic</strong>
+                <span>from the workshop</span>
               </div>
             </aside>
 
-            <article class="card about-box">
-              <p>Hop Goblin Homestead is a small, curious operation run from a real homestead. It started with too many mushrooms, a soap experiment, and a hop vine that wouldn't quit.</p>
-              <p>Everything here is made, grown, or sourced with intention: low-waste, practical, useful, and a little bit clever. No grand claims — just small-batch goods from someone who likes making things and sharing them with neighbors.</p>
+            <article class="founder-text">
+              <h3>Started with Too Many Mushrooms</h3>
+              <p>Hop Goblin Homestead is a real working homestead that happens to make and grow things worth sharing.</p>
+              <p>It started with a soap experiment, too many mushrooms, and a hop vine that refuses to quit. Now it's a practical operation: we make useful things, grow interesting goods, experiment constantly, and share the results with neighbors who care about zero-waste, handmade, and actually functional.</p>
+              <p>Everything here is made, grown, or sourced with intention. No grand claims. Just small-batch goods from someone who likes making stuff, learning by doing, and occasionally discovering something worth a market table.</p>
               <p>The goblin is mostly metaphorical. Mostly.</p>
             </article>
           </div>
         </div>
       </section>
 
-      <section id="find-me">
+      <!-- Markets Section -->
+      <section class="section-alt" id="markets">
         <div class="inner">
           <div class="section-title">
-            <span class="section-kicker">Where the table appears</span>
-            <h2>Find Me</h2>
+            <span class="section-kicker">Where we are</span>
+            <h2>Find Me at Markets</h2>
             <div class="divider" aria-hidden="true"></div>
           </div>
 
           <div class="find-contact-grid">
             <article class="chalkboard">
-              <h3>Upcoming Markets</h3>
+              <h3>📅 Upcoming Markets</h3>
               <ul class="schedule">
-                <li><span>Next Market</span><span>Coming soon</span></li>
-                <li><span>Location</span><span>Hagerstown-area pop-ups and local events</span></li>
-                <li><span>Updates</span><span>Follow along for current availability</span></li>
+                <li><span>Launch</span><span>Summer 2026</span></li>
+                <li><span>Region</span><span>Hagerstown-area</span></li>
+                <li><span>Markets</span><span>Farmers markets & local events</span></li>
+                <li><span>Updates</span><span>Follow for announcements</span></li>
               </ul>
-              <p class="market-note">Inventory changes with the season, the experiments, and whatever the goblin has been tinkering with.</p>
+              <p class="market-note">
+                Inventory changes with the seasons and whatever the goblin has been tinkering with. Check social media or sign up for the mailing list to stay in the loop.
+              </p>
             </article>
 
-            <article class="card contact-card" id="contact">
-              <h3>Get in Touch</h3>
-              <p>Questions, refill requests, custom orders, or market availability?</p>
+            <article class="contact-card" id="contact">
+              <h3>📬 Get in Touch</h3>
+              <p>Questions about products, restocks, or market locations?</p>
               <ul class="contact-list">
-                <li>hello@hopgoblinhomestead.com</li>
-                <li>DM on socials anytime</li>
+                <li>📧 hello@hopgoblinhomestead.com</li>
+                <li>📱 DM on social anytime</li>
               </ul>
-              <div class="form-preview" aria-label="Contact form placeholder">
-                <div class="field">Name</div>
-                <div class="field">Email</div>
-                <div class="field message">Message</div>
+              
+              <div style="margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px dashed rgba(123, 98, 69, 0.3);">
+                <p style="font-weight: 600; margin-bottom: 0.75rem;">Follow the Goblin</p>
+                <div class="social-links">
+                  <a href="https://instagram.com" target="_blank" rel="noopener">📷 Instagram</a>
+                  <a href="mailto:hello@hopgoblinhomestead.com">✉️ Email List</a>
+                </div>
               </div>
             </article>
           </div>
@@ -951,7 +1040,13 @@
     <footer>
       <strong>Hop Goblin Homestead</strong>
       <p>Small-batch · Garden-grown · Low-waste</p>
-      <p>Made with dirt, curiosity, and a little mischief.</p>
+      <p>Practical magic from a curious homestead</p>
+      <div class="footer-links">
+        <a href="mailto:hello@hopgoblinhomestead.com">Email</a>
+        <a href="https://instagram.com" target="_blank">Instagram</a>
+        <a href="#newsletter">Mailing List</a>
+      </div>
+      <p style="margin-top: 1rem; font-size: 0.75rem; opacity: 0.8;">Made with dirt, curiosity, and a little mischief. © 2026</p>
     </footer>
   </div>
 </body>
