@@ -215,150 +215,165 @@
         repeating-linear-gradient(90deg, rgba(123, 98, 69, 0.08) 0 1px, transparent 1px 9px);
       box-shadow: 10px 12px 0 rgba(216, 198, 162, 0.6), inset 0 0 0 9px rgba(255, 255, 255, 0.22);
       overflow: hidden;
+      display: grid;
+      place-items: center;
     }
 
-    .shelf {
-      position: absolute;
-      left: 10%;
-      right: 10%;
-      height: 1.1rem;
-      background: linear-gradient(180deg, #8a6a45, #5f452b);
-      border-radius: 999px;
-      box-shadow: 0 8px 0 rgba(45, 42, 38, 0.12);
+    /* Modern Market Stand Illustration */
+    .market-stall {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      padding: 2rem;
     }
 
-    .shelf.one { top: 42%; }
-    .shelf.two { top: 72%; }
-
-    .jar, .bottle, .mushroom, .hop, .tiny-tag, .footprint { position: absolute; }
-
-    .jar {
-      width: 4rem;
-      height: 5.6rem;
-      bottom: 30%;
-      left: 16%;
-      border: 3px solid rgba(95, 127, 67, 0.7);
-      border-radius: 0.7rem 0.7rem 1.1rem 1.1rem;
-      background: rgba(255, 249, 236, 0.7);
-      box-shadow: inset 0 0 0 7px rgba(255, 255, 255, 0.22);
+    /* Market table base */
+    .stall-table {
+      position: relative;
+      width: 85%;
+      height: 45%;
+      background: linear-gradient(180deg, #9b8b7e 0%, #7a6a5d 100%);
+      border-radius: 0.5rem;
+      box-shadow: 0 12px 0 rgba(45, 42, 38, 0.25), inset 0 2px 4px rgba(255, 255, 255, 0.1);
+      border: 2px solid #6b5a4d;
     }
 
-    .jar::before {
-      content: "refill";
-      position: absolute;
-      left: 50%;
-      top: 45%;
-      transform: translate(-50%, -50%) rotate(-4deg);
-      background: var(--kraft);
-      color: var(--charcoal);
-      padding: 0.15rem 0.35rem;
-      border: 1px dashed var(--brown);
-      font: 700 0.58rem/1 "Courier New", monospace;
-    }
-
-    .bottle {
-      width: 3.2rem;
-      height: 7rem;
-      bottom: 30%;
-      left: 38%;
-      border-radius: 0.5rem 0.5rem 1.2rem 1.2rem;
-      background: linear-gradient(180deg, var(--sage), var(--moss));
-      border: 3px solid rgba(56, 51, 45, 0.24);
-    }
-
-    .bottle::before {
+    /* Table legs */
+    .stall-table::before,
+    .stall-table::after {
       content: "";
       position: absolute;
-      top: -1.15rem;
-      left: 0.8rem;
-      width: 1.4rem;
-      height: 1.3rem;
-      background: var(--moss);
-      border-radius: 0.25rem 0.25rem 0 0;
+      bottom: -12px;
+      width: 12%;
+      height: 15px;
+      background: #6b5a4d;
+      border-radius: 2px;
     }
 
-    .bottle::after {
-      content: "soap";
+    .stall-table::before { left: 8%; }
+    .stall-table::after { right: 8%; }
+
+    /* Product display areas */
+    .product-group {
       position: absolute;
+      bottom: 0;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      gap: 0.8rem;
+    }
+
+    .product-group.left { left: 8%; width: 28%; }
+    .product-group.center { left: 50%; transform: translateX(-50%); width: 28%; }
+    .product-group.right { right: 8%; width: 28%; }
+
+    /* Bottle style products */
+    .bottle-product {
+      width: 20%;
+      height: 60%;
+      border-radius: 0 0 8px 8px;
+      border: 2px solid rgba(45, 42, 38, 0.2);
+      position: relative;
+    }
+
+    .bottle-product::before {
+      content: "";
+      position: absolute;
+      top: -8px;
       left: 50%;
-      bottom: 1.45rem;
       transform: translateX(-50%);
-      background: var(--paper);
-      padding: 0.15rem 0.25rem;
-      border-radius: 0.2rem;
-      font: 700 0.55rem/1 "Courier New", monospace;
-      color: var(--charcoal);
+      width: 60%;
+      height: 8px;
+      background: inherit;
+      border-radius: 4px 4px 0 0;
     }
 
-    .mushroom {
-      right: 17%;
-      bottom: 30%;
-      width: 5.6rem;
-      height: 5rem;
+    .bottle-1 { background: linear-gradient(90deg, var(--sage) 0%, var(--moss) 100%); }
+    .bottle-2 { background: linear-gradient(90deg, var(--kraft) 0%, var(--gold) 100%); }
+    .bottle-3 { background: linear-gradient(90deg, #c8a882 0%, #a67c52 100%); }
+    .bottle-4 { background: linear-gradient(90deg, var(--hop) 0%, var(--sage) 100%); }
+    .bottle-5 { background: linear-gradient(90deg, #d4b59f 0%, #b8956a 100%); }
+
+    /* Jar products */
+    .jar-product {
+      width: 24%;
+      height: 55%;
+      border-radius: 0 0 6px 6px;
+      border: 2px solid rgba(45, 42, 38, 0.15);
+      background: rgba(255, 249, 236, 0.6);
+      position: relative;
     }
 
-    .mushroom::before {
+    .jar-product::before {
       content: "";
       position: absolute;
-      width: 5.6rem;
-      height: 2.9rem;
-      background: #b48a65;
-      border-radius: 4rem 4rem 1rem 1rem;
-      border: 3px solid rgba(56, 51, 45, 0.18);
+      top: -6px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 70%;
+      height: 6px;
+      background: #8a7a6d;
+      border-radius: 3px 3px 0 0;
     }
 
-    .mushroom::after {
-      content: "";
+    /* Accent plant/hop illustration */
+    .accent-plant {
       position: absolute;
-      width: 1.6rem;
-      height: 3.4rem;
-      left: 2rem;
-      top: 2rem;
-      background: #f4ead8;
-      border-radius: 0.65rem;
-      border: 2px solid rgba(56, 51, 45, 0.12);
+      top: 5%;
+      width: 15%;
+      height: 30%;
+      right: 12%;
     }
 
-    .hop {
-      width: 4.4rem;
-      height: 6rem;
-      right: 32%;
-      top: 10%;
-    }
-
-    .hop::before {
-      content: "";
+    .plant-stem {
       position: absolute;
-      inset: 0;
-      background:
-        radial-gradient(ellipse at 50% 18%, var(--hop) 0 22%, transparent 24%),
-        radial-gradient(ellipse at 35% 38%, var(--sage) 0 22%, transparent 24%),
-        radial-gradient(ellipse at 65% 38%, var(--sage) 0 22%, transparent 24%),
-        radial-gradient(ellipse at 50% 58%, var(--moss) 0 25%, transparent 27%),
-        radial-gradient(ellipse at 50% 82%, var(--sage) 0 18%, transparent 20%);
-      filter: drop-shadow(2px 3px 0 rgba(45, 42, 38, 0.15));
+      left: 50%;
+      bottom: 0;
+      width: 2px;
+      height: 70%;
+      background: var(--moss);
+      transform: translateX(-50%);
     }
 
-    .tiny-tag {
-      right: 8%;
-      top: 56%;
-      transform: rotate(7deg);
-      background: var(--paper);
-      border: 1px dashed var(--brown);
-      color: var(--brown);
-      padding: 0.4rem 0.5rem;
-      border-radius: 0.35rem;
+    .plant-leaf {
+      position: absolute;
+      width: 8px;
+      height: 12px;
+      background: var(--sage);
+      border-radius: 50%;
+      left: 50%;
+    }
+
+    .plant-leaf:nth-child(1) { top: 0; transform: translateX(-50%) rotate(-25deg); }
+    .plant-leaf:nth-child(2) { top: 15%; transform: translateX(-50%) rotate(25deg); }
+    .plant-leaf:nth-child(3) { top: 30%; transform: translateX(-50%) rotate(-20deg); }
+    .plant-leaf:nth-child(4) { top: 45%; transform: translateX(-50%) rotate(20deg); }
+
+    /* Decorative elements */
+    .market-sign {
+      position: absolute;
+      top: 8%;
+      left: 10%;
+      width: 80px;
+      height: 50px;
+      background: var(--kraft);
+      border: 2px solid var(--brown);
+      border-radius: 4px;
+      display: grid;
+      place-items: center;
       font: 700 0.6rem/1.2 "Courier New", monospace;
-      box-shadow: 3px 3px 0 rgba(216, 198, 162, 0.8);
+      color: var(--charcoal);
+      text-align: center;
+      padding: 0.4rem;
+      box-shadow: 2px 2px 0 rgba(45, 42, 38, 0.15);
     }
 
-    .footprint {
-      color: rgba(56, 51, 45, 0.35);
-      font: 700 1.5rem/1 "Courier New", monospace;
-      letter-spacing: 0.12rem;
-      transform: rotate(-18deg);
-      left: 12%;
-      top: 18%;
+    .market-sign::before {
+      content: "Fresh";
+      display: block;
     }
 
     .section-title {
@@ -697,11 +712,6 @@
       .hero { min-height: auto; }
       .hero-grid { gap: 2.2rem; }
       .market-scene { min-height: 18.5rem; border-radius: 1.4rem; }
-      .jar { left: 12%; transform: scale(0.82); transform-origin: bottom left; }
-      .bottle { left: 38%; transform: scale(0.82); transform-origin: bottom center; }
-      .mushroom { right: 9%; transform: scale(0.78); transform-origin: bottom right; }
-      .hop { right: 30%; transform: scale(0.72); transform-origin: top right; }
-      .tiny-tag { right: 4%; top: 49%; }
       .faq-grid,
       .products { grid-template-columns: 1fr; }
       .schedule li { display: block; }
@@ -731,15 +741,32 @@
           <p class="supporting">Refills, useful little goods, garden experiments, and low-waste swaps from a curious local homestead.</p>
         </div>
 
-        <div class="market-scene" aria-label="CSS-only rustic market shelf illustration">
-          <div class="footprint">·· ··</div>
-          <div class="hop"></div>
-          <div class="shelf one"></div>
-          <div class="jar"></div>
-          <div class="bottle"></div>
-          <div class="mushroom"></div>
-          <div class="tiny-tag">table goods<br />+ tinkering</div>
-          <div class="shelf two"></div>
+        <div class="market-scene" aria-label="Modern market stall illustration with products">
+          <div class="market-stall">
+            <div class="accent-plant">
+              <div class="plant-stem"></div>
+              <div class="plant-leaf"></div>
+              <div class="plant-leaf"></div>
+              <div class="plant-leaf"></div>
+              <div class="plant-leaf"></div>
+            </div>
+            <div class="market-sign">Fresh<br/>Local</div>
+            <div class="stall-table">
+              <div class="product-group left">
+                <div class="bottle-product bottle-1"></div>
+                <div class="bottle-product bottle-2"></div>
+              </div>
+              <div class="product-group center">
+                <div class="jar-product"></div>
+                <div class="jar-product"></div>
+                <div class="jar-product"></div>
+              </div>
+              <div class="product-group right">
+                <div class="bottle-product bottle-3"></div>
+                <div class="bottle-product bottle-4"></div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </header>
@@ -876,8 +903,8 @@
             </aside>
 
             <article class="card about-box">
-              <p>Hop Goblin Homestead is a small, curious operation run from a real homestead. It started with too many mushrooms, a soap experiment, and a hop vine that wouldn’t quit.</p>
-              <p>Everything here is made, grown, or sourced with intention: low-waste, practical, useful, and a little bit clever. No grand claims — just small-batch goods from someone who likes making things, solving problems, and sharing the results.</p>
+              <p>Hop Goblin Homestead is a small, curious operation run from a real homestead. It started with too many mushrooms, a soap experiment, and a hop vine that wouldn't quit.</p>
+              <p>Everything here is made, grown, or sourced with intention: low-waste, practical, useful, and a little bit clever. No grand claims — just small-batch goods from someone who likes making things and sharing them with neighbors.</p>
               <p>The goblin is mostly metaphorical. Mostly.</p>
             </article>
           </div>
