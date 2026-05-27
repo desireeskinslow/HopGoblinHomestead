@@ -1,784 +1,633 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Hop Goblin Homestead: Low-waste refill goods and homestead projects. Find us at the Hagerstown Historic Farmer's Market every Sunday 11am–3pm." />
-  <title>Hop Goblin Homestead • Refills & Homestead Goods</title>
+  <title>Hop Goblin Homestead</title>
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Manrope:wght@400;500;600;700&display=swap');
 
+    /*
+      Canva's "Blueberry" font is not available as a standard web font.
+      To use the real font:
+      1. Export/download the font from Canva if licensed
+      2. Add the font files to your project
+      3. Replace the font-family below with your hosted Blueberry font
+    */
     :root {
-      --ink: #3d3a35;
-      --moss: #6b8e5f;
-      --sage: #9aac94;
-      --cream: #f5f2ed;
-      --paper: #fffbf6;
-      --kraft: #d9c7a3;
-      --brown: #8b7355;
-      --shadow: rgba(61, 58, 53, 0.1);
+      --bg: #efe7d6;
+      --gold: #b98b47;
+      --moss: #7b8f6a;
+      --card: #fffdf9;
+      --green: #5e7153;
+      --green-dark: #475640;
+      --text: #2f312c;
+      --muted: #6e7168;
+      --border: #d9d2c3;
+      --shadow: rgba(0, 0, 0, 0.06);
     }
 
-    html { scroll-behavior: smooth; }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
     body {
-      background: var(--paper);
-      color: var(--ink);
-      font-family: Georgia, "Times New Roman", serif;
+      font-family: 'Manrope', Arial, Helvetica, sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(185,139,71,0.06), transparent 25%),
+        radial-gradient(circle at bottom right, rgba(94,113,83,0.08), transparent 30%),
+        var(--bg);
+      color: var(--text);
       line-height: 1.6;
-      overflow-x: hidden;
     }
 
-    a { color: inherit; text-decoration: none; }
-    button { cursor: pointer; }
+    a {
+      color: var(--green-dark);
+    }
 
-    /* Hero Section */
-    .hero {
-      min-height: 60vh;
-      display: grid;
-      place-items: center;
-      padding: 3rem 1.5rem;
-      background: linear-gradient(135deg, #faf7f2 0%, #f5f0e8 100%);
-      border-bottom: 2px solid var(--moss);
+    .hero .container {
       position: relative;
-      overflow: hidden;
+      z-index: 2;
     }
 
-    .hero::before {
-      content: "";
-      position: absolute;
-      top: -20%;
-      right: -15%;
-      width: 400px;
-      height: 400px;
-      background: radial-gradient(circle, rgba(107, 142, 95, 0.08) 0%, transparent 70%);
-      border-radius: 50%;
-      pointer-events: none;
-    }
-
-    .hero-content {
-      max-width: 700px;
-      text-align: center;
-      position: relative;
-      z-index: 1;
-    }
-
-    h1 {
-      font-size: clamp(2.2rem, 6vw, 4rem);
-      line-height: 1.1;
-      color: var(--ink);
-      margin-bottom: 0.75rem;
-      letter-spacing: -0.01em;
-      font-weight: 400;
-    }
-
-    .tagline {
-      font-size: clamp(1rem, 2vw, 1.3rem);
-      color: var(--moss);
-      font-style: italic;
-      margin-bottom: 2rem;
-      font-weight: 400;
-    }
-
-    .market-info {
-      background: rgba(107, 142, 95, 0.08);
-      border-left: 3px solid var(--moss);
-      padding: 1.25rem;
-      border-radius: 0.35rem;
-      font: 500 0.95rem/1.6 "Courier New", monospace;
-      color: var(--ink);
-    }
-
-    /* Section Styling */
-    section {
-      padding: 3.5rem 1.5rem;
-      max-width: 1000px;
+    .container {
+      width: min(1000px, 92%);
       margin: 0 auto;
     }
 
-    section > h2 {
-      font-size: clamp(1.8rem, 4vw, 2.4rem);
-      color: var(--ink);
-      margin-bottom: 1.5rem;
-      text-align: center;
-      font-weight: 400;
-      letter-spacing: -0.01em;
+    section {
+      padding: 4rem 0;
     }
 
-    /* How Refills Work */
+    h1, h2, h3 {
+      font-family: 'Blueberry', 'DM Serif Display', serif;
+      line-height: 1.1;
+      letter-spacing: 0.02em;
+    }
+
+    h1 {
+      font-size: clamp(2.8rem, 5vw, 4.4rem);
+      margin-bottom: 0.35rem;
+      display: none;
+    }
+
+    h2 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      margin-bottom: 1.5rem;
+    }
+
+    p {
+      margin-bottom: 0;
+    }
+
+    .hero {
+      background-color: #efe7d6;
+      position: relative;
+      min-height: 52vh;
+      display: flex;
+      align-items: center;
+      padding: 4rem 0 3rem;
+      background:
+        linear-gradient(rgba(239,231,214,0.92), rgba(239,231,214,0.96));
+      text-align: center;
+      overflow: hidden;
+      border-bottom: 1px solid rgba(94,113,83,0.08);
+    }
+
+    
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at center, rgba(185,139,71,0.06), transparent 55%);
+      pointer-events: none;
+    }
+
+    .hero-logo {
+      width: min(240px, 60vw);
+      margin: 0 auto 1rem;
+      display: block;
+      filter: drop-shadow(0 10px 18px rgba(0,0,0,0.08));
+    }
+
+    
+
+    .tagline {
+      font-size: 1.1rem;
+      font-style: italic;
+      color: var(--muted);
+      max-width: 720px;
+      margin: 0 auto 1rem;
+    }
+
+    .market-info {
+      text-align: center;
+      line-height: 1.4;
+      font-size: clamp(0.95rem, 1.5vw, 1.15rem);
+      letter-spacing: 0.06em;
+      padding: 0.9rem 1.4rem;
+      margin-top: 1.25rem;
+      border: 1px solid rgba(255,255,255,0.25);
+      backdrop-filter: blur(4px);
+      display: inline-block;
+      background: linear-gradient(135deg, var(--green), var(--green-dark));
+      color: white;
+      padding: 0.8rem 1.2rem;
+      border-radius: 14px;
+      font-weight: 700;
+      text-transform: none;
+      position: relative;
+      box-shadow: 0 4px 12px var(--shadow);
+    }
+
+    .market-info span {
+      opacity: 0.82;
+      letter-spacing: 0.04em;
+    }
+
     .steps {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 2rem;
-      margin-top: 2.5rem;
-    }
-
-    .step {
-      text-align: center;
-    }
-
-    .step-number {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 50px;
-      height: 50px;
-      background: var(--moss);
-      color: white;
-      border-radius: 50%;
-      font: 700 1.4rem/1 "Courier New", monospace;
-      margin-bottom: 1rem;
-    }
-
-    .step h3 {
-      font-size: 1.1rem;
-      color: var(--ink);
-      margin-bottom: 0.5rem;
-      font-weight: 500;
-    }
-
-    .step p {
-      font: 400 0.9rem/1.6 "Courier New", monospace;
-      color: #6b6359;
-    }
-
-    .supporting-text {
-      text-align: center;
-      font: 400 0.95rem/1.7 "Courier New", monospace;
-      color: #6b6359;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 0.9rem;
       margin-top: 2rem;
-      max-width: 600px;
-      margin-left: auto;
-      margin-right: auto;
     }
 
-    /* Product Cards */
-    .products {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1.5rem;
-      margin-top: 2.5rem;
-    }
-
-    .product-card {
-      background: white;
-      border: 1px solid #e8ddd0;
-      border-radius: 0.5rem;
-      padding: 1.75rem;
-      box-shadow: 0 2px 8px rgba(61, 58, 53, 0.06);
-      display: flex;
-      flex-direction: column;
-      transition: box-shadow 0.2s ease, transform 0.2s ease;
-    }
-
-    .product-card:hover {
-      box-shadow: 0 4px 16px rgba(61, 58, 53, 0.12);
-      transform: translateY(-2px);
-    }
-
-    .product-card h3 {
-      font-size: 1.25rem;
-      color: var(--ink);
-      margin-bottom: 0.75rem;
-      font-weight: 500;
-    }
-
-    .product-card p {
-      font: 400 0.9rem/1.6 "Courier New", monospace;
-      color: #6b6359;
-      margin-bottom: 1.25rem;
-      flex-grow: 1;
-    }
-
-    .product-bullets {
-      list-style: none;
-      margin-bottom: 1.5rem;
-      border-top: 1px solid #e8ddd0;
-      border-bottom: 1px solid #e8ddd0;
-      padding: 1rem 0;
-    }
-
-    .product-bullets li {
-      font: 400 0.85rem/1.8 "Courier New", monospace;
-      color: #7b6f63;
-      padding-left: 1.2rem;
+    .step,
+    .card,
+    .reason {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 1.25rem;
+      box-shadow: 0 10px 24px var(--shadow);
       position: relative;
     }
 
-    .product-bullets li::before {
-      content: "◆";
-      position: absolute;
-      left: 0;
-      color: var(--moss);
-      font-size: 0.65rem;
-    }
+    
 
-    .btn {
-      background: var(--moss);
+    .step-number {
+      width: 48px;
+      height: 48px;
+      border-radius: 16px;
+      background: var(--green);
       color: white;
-      border: none;
-      padding: 0.75rem 1.5rem;
-      border-radius: 0.35rem;
-      font: 600 0.85rem/1 "Courier New", monospace;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      transition: background 0.2s ease;
-      align-self: flex-start;
-      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      margin-bottom: 1rem;
+      font-weight: bold;
     }
 
-    .btn:hover { background: #5a7451; }
-
-    /* Why Refills */
-    .why-refills {
-      background: rgba(107, 142, 95, 0.06);
-      border-radius: 0.5rem;
-      padding: 2rem;
-      margin-top: 2.5rem;
-    }
-
-    .reasons {
+    .product-grid,
+    .reasons-grid {
+      align-items: stretch;
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
       gap: 1.5rem;
-      margin-top: 1.5rem;
+      margin-top: 2rem;
     }
 
-    .reason {
-      text-align: center;
+    .step {
+      min-height: 160px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: flex-start;
+      text-align: left;
+      gap: 0.75rem;
     }
 
-    .reason-icon {
-      font-size: 2.2rem;
+    .card {
+      min-height: 260px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .card h3 {
       margin-bottom: 0.75rem;
     }
 
-    .reason p {
-      font: 400 0.9rem/1.6 "Courier New", monospace;
-      color: #6b6359;
+    .card ul {
+      padding-left: 1.1rem;
+      margin: 0.75rem 0;
     }
 
-    /* Rotating Goods */
-    .rotating-goods {
-      background: white;
-      border: 1px solid #e8ddd0;
-      border-radius: 0.5rem;
-      padding: 2.5rem;
-      margin-top: 2.5rem;
+    .card li {
+      margin-bottom: 0.35rem;
     }
 
-    .rotating-goods p {
-      font: 400 0.95rem/1.7 "Courier New", monospace;
-      color: #6b6359;
-      margin-bottom: 1rem;
+    section:nth-of-type(even) {
+      background: rgba(255,255,255,0.28);
     }
 
-    .rotating-goods p:last-child {
-      color: var(--moss);
-      font-weight: 500;
+    .card::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 18px;
+      padding: 1px;
+      background: linear-gradient(135deg, rgba(185,139,71,0.22), transparent 40%, rgba(94,113,83,0.18));
+      -webkit-mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      pointer-events: none;
     }
 
-    /* Socials / Contact */
-    .contact-section {
-      text-align: center;
-      margin-top: 2.5rem;
+    
+
+    button {
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      background: var(--green);
+      color: white;
+      border: none;
+      padding: 0.85rem 1.2rem;
+      border-radius: 999px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      font-size: 0.95rem;
     }
 
-    .contact-section p {
-      font: 400 0.95rem/1.7 "Courier New", monospace;
-      color: #6b6359;
-      margin-bottom: 1.75rem;
+    
+
+    button:hover {
+      background: var(--green-dark);
+      transform: translateY(-1px);
+    }
+
+    .muted {
+      color: var(--muted);
     }
 
     .social-links {
       display: flex;
-      justify-content: center;
-      gap: 1.5rem;
       flex-wrap: wrap;
+      gap: 1rem;
+      margin-top: 1.5rem;
     }
 
     .social-links a {
       display: inline-flex;
       align-items: center;
-      gap: 0.5rem;
-      padding: 0.7rem 1.25rem;
-      background: var(--moss);
-      color: white;
-      border-radius: 0.35rem;
-      font: 600 0.8rem/1 "Courier New", monospace;
+      justify-content: center;
+      min-width: 150px;
+      padding: 1rem 1.4rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
-      letter-spacing: 0.05em;
-      transition: background 0.2s ease;
+      text-decoration: none;
+      color: var(--text);
+      background: rgba(255,255,255,0.55);
+      border: 2px solid var(--text);
+      border-radius: 14px;
     }
 
-    .social-links a:hover { background: #5a7451; }
+    .social-links a:hover {
+      background: var(--text);
+      color: var(--bg);
+      transform: translateY(-2px);
+    }
 
-    /* Modal */
+    footer {
+      padding: 2rem 0;
+      border-top: 1px solid var(--border);
+      text-align: center;
+      color: var(--muted);
+    }
+
     .modal {
       display: none;
       position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(61, 58, 53, 0.6);
+      inset: 0;
+      background: rgba(0,0,0,0.6);
       z-index: 1000;
       align-items: center;
       justify-content: center;
       padding: 1rem;
-      overflow-y: auto;
     }
-
-    .modal.active { display: flex; }
 
     .modal-content {
-      background: white;
-      border-radius: 0.5rem;
-      padding: 2rem;
-      max-width: 600px;
-      width: 100%;
-      box-shadow: 0 10px 40px rgba(61, 58, 53, 0.2);
+      background: var(--card);
+      width: min(700px, 100%);
       max-height: 90vh;
       overflow-y: auto;
-    }
-
-    .modal-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 1.5rem;
-    }
-
-    .modal-header h3 {
-      font-size: 1.5rem;
-      color: var(--ink);
-      font-weight: 500;
-    }
-
-    .modal-close {
-      background: none;
-      border: none;
-      font-size: 1.8rem;
-      color: var(--ink);
-      cursor: pointer;
-      padding: 0;
-      width: 32px;
-      height: 32px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: color 0.2s ease;
-    }
-
-    .modal-close:hover { color: var(--moss); }
-
-    .modal-section {
-      margin-bottom: 1.75rem;
-    }
-
-    .modal-section h4 {
-      font: 600 0.95rem/1 "Courier New", monospace;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      color: var(--moss);
-      margin-bottom: 0.75rem;
-    }
-
-    .modal-section p, .modal-section li {
-      font: 400 0.9rem/1.7 "Courier New", monospace;
-      color: #6b6359;
-      margin-bottom: 0.5rem;
-    }
-
-    .modal-section ul {
-      list-style: none;
-      padding-left: 1.2rem;
-    }
-
-    .modal-section li::before {
-      content: "◆";
-      position: absolute;
-      left: 0;
-      color: var(--moss);
-      font-size: 0.65rem;
-      margin-right: 0.5rem;
-    }
-
-    .modal-section li {
+      border-radius: 20px;
+      padding: 2rem;
       position: relative;
-      padding-left: 1rem;
     }
 
-    .modal-links {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1rem;
-      margin-top: 1rem;
+    .close {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      border: none;
+      background: none;
+      color: var(--muted);
+      font-size: 1.5rem;
+      cursor: pointer;
     }
 
-    .modal-links a {
-      display: inline-block;
-      padding: 0.6rem 1rem;
-      background: var(--moss);
-      color: white;
-      border-radius: 0.35rem;
-      font: 600 0.8rem/1 "Courier New", monospace;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      transition: background 0.2s ease;
-    }
-
-    .modal-links a:hover { background: #5a7451; }
-
-    .modal-note {
-      background: rgba(107, 142, 95, 0.06);
-      border-left: 3px solid var(--moss);
-      padding: 1rem;
-      border-radius: 0.35rem;
-      font: 400 0.85rem/1.6 "Courier New", monospace;
-      color: #6b6359;
+    .modal-content h3 {
       margin-top: 1.5rem;
-    }
-
-    /* Footer */
-    footer {
-      background: var(--ink);
-      color: #c9bfb3;
-      padding: 2rem 1.5rem;
-      text-align: center;
-      border-top: 2px solid var(--moss);
-      margin-top: 3.5rem;
-    }
-
-    footer p {
-      font: 400 0.9rem/1.6 "Courier New", monospace;
       margin-bottom: 0.75rem;
     }
 
-    footer .footer-links {
-      display: flex;
-      justify-content: center;
-      gap: 1.5rem;
-      flex-wrap: wrap;
-      margin-top: 1rem;
+    .modal-content ul {
+      padding-left: 1.2rem;
+      margin-bottom: 1rem;
     }
 
-    footer a {
-      color: #c9bfb3;
-      transition: color 0.2s ease;
-    }
-
-    footer a:hover { color: var(--cream); }
-
-    /* Responsive */
     @media (max-width: 640px) {
-      section { padding: 2.5rem 1rem; }
-      .hero { padding: 2rem 1rem; min-height: 55vh; }
-      .modal-content { padding: 1.5rem; }
-      .steps { gap: 1.5rem; }
-      .products { gap: 1rem; }
-      .reasons { gap: 1rem; }
-      .social-links { gap: 1rem; }
+      section {
+        padding: 3rem 0;
+      }
+
+      .market-info {
+        border-radius: 18px;
+        line-height: 1.5;
+      }
     }
   </style>
 </head>
 <body>
-  <!-- Hero Section -->
-  <section class="hero">
-    <div class="hero-content">
+
+  <header class="hero">
+    <div class="container">
+      <img src="logo.png" alt="Hop Goblin Homestead Logo" class="hero-logo">
       <h1>Hop Goblin Homestead</h1>
-      <p class="tagline">Low-waste refill goods and evolving homestead projects.</p>
+      
+      <p class="tagline">Practical sustainability through refills, cultivation, compost, and curiosity.</p>
       <div class="market-info">
-        📍 Find me at the Hagerstown Historic Farmer's Market<br/>
-        Every Sunday from 11am–3pm
+        Hagerstown Historic Farmer’s Market<br>
+        <span>Sundays · 11am–3pm</span>
       </div>
     </div>
-  </section>
+  </header>
 
-  <!-- How Refills Work -->
-  <section>
-    <h2>How Refills Work</h2>
-    <div class="steps">
-      <div class="step">
-        <div class="step-number">1</div>
-        <h3>Bring a Clean Container</h3>
-        <p>Reuse a bottle or jar you already have.</p>
-      </div>
-      <div class="step">
-        <div class="step-number">2</div>
-        <h3>Fill What You Need</h3>
-        <p>Choose the quantity that works for you.</p>
-      </div>
-      <div class="step">
-        <div class="step-number">3</div>
-        <h3>Pay by the Ounce</h3>
-        <p>You only pay for what you take.</p>
-      </div>
-      <div class="step">
-        <div class="step-number">4</div>
-        <h3>Reuse and Refill</h3>
-        <p>Bring your container back anytime.</p>
-      </div>
-    </div>
-    <p class="supporting-text">Refilling helps reduce waste while letting you buy only what you need.</p>
-  </section>
+  <main>
 
-  <!-- Current Refill Products -->
-  <section>
-    <h2>Current Refill Products</h2>
-    <div class="products">
-      <!-- Laundry Detergent -->
-      <div class="product-card">
-        <h3>Laundry Detergent</h3>
-        <p>Fragrance-free liquid laundry detergent for everyday washing.</p>
-        <ul class="product-bullets">
-          <li>HE compatible</li>
-          <li>Dye free</li>
-          <li>Approx. 1 oz per load</li>
-          <li>Bring a clean container</li>
-        </ul>
-        <button class="btn" onclick="openModal('laundry')">Ingredients & Safety Info</button>
-      </div>
+    <section>
+      <div class="container">
+        <h2>How It Works</h2>
+        
+        <div class="steps">
+          <div class="step">
+            <div class="step-number">1</div>
+            <p>Bring a clean container you already have at home.</p>
+          </div>
 
-      <!-- Dish Soap -->
-      <div class="product-card">
-        <h3>Dish Soap</h3>
-        <p>Fragrance-free liquid dish soap for everyday hand washing.</p>
-        <ul class="product-bullets">
-          <li>Designed for hand washing dishes</li>
-          <li>Free & clear formula</li>
-          <li>Bring a clean container</li>
-        </ul>
-        <button class="btn" onclick="openModal('dish')">Ingredients & Safety Info</button>
-      </div>
+          <div class="step">
+            <div class="step-number">2</div>
+            <p>Fill only what you need.</p>
+          </div>
 
-      <!-- Castile Soap -->
-      <div class="product-card">
-        <h3>Castile Soap</h3>
-        <p>Multi-purpose concentrated soap for household and personal care use.</p>
-        <ul class="product-bullets">
-          <li>Unscented</li>
-          <li>Concentrated formula</li>
-          <li>Suitable for diluted solutions</li>
-          <li>Bring a clean container</li>
-        </ul>
-        <button class="btn" onclick="openModal('castile')">Ingredients & Safety Info</button>
-      </div>
-    </div>
-  </section>
+          <div class="step">
+            <div class="step-number">3</div>
+            <p>Pay by the ounce.</p>
+          </div>
 
-  <!-- Why Refills -->
-  <section>
-    <h2>Why Refills?</h2>
-    <div class="why-refills">
-      <div class="reasons">
-        <div class="reason">
-          <div class="reason-icon">♻️</div>
-          <p>Reduce single-use plastic waste</p>
+          <div class="step">
+            <div class="step-number">4</div>
+            <p>Use it, refill it, repeat.</p>
+          </div>
         </div>
-        <div class="reason">
-          <div class="reason-icon">🔄</div>
-          <p>Reuse containers you already own</p>
-        </div>
-        <div class="reason">
-          <div class="reason-icon">📦</div>
-          <p>Buy only what you need</p>
-        </div>
-        <div class="reason">
-          <div class="reason-icon">✓</div>
-          <p>Practical and low-waste</p>
+
+        
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <h2>Current Refills</h2>
+
+        <div class="product-grid">
+
+          <div class="card">
+            <h3>Laundry Detergent</h3>
+            <p>Fragrance-free liquid laundry detergent for everyday washing.</p>
+
+            <ul>
+              <li>HE compatible</li>
+              <li>Fragrance-free & dye-free</li>
+              <li>Approx. 1 oz per load</li>
+            </ul>
+
+            <div style="margin-top:auto; padding-top:0.75rem;">
+            <button onclick="openModal('laundryModal')">Ingredients & Safety Info</button>
+            </div>
+          </div>
+
+          <div class="card">
+            <h3>Dish Soap</h3>
+            <p>Fragrance-free liquid dish soap for everyday hand washing.</p>
+
+            <ul>
+              <li>Designed for hand washing dishes</li>
+              <li>Free & clear formula</li>
+              <li>Cuts grease without heavy scents</li>
+            </ul>
+
+            <div style="margin-top:auto; padding-top:0.75rem;">
+            <button onclick="openModal('dishModal')">Ingredients & Safety Info</button>
+            </div>
+          </div>
+
+          <div class="card">
+            <h3>Castile Soap</h3>
+            <p>Multi-purpose concentrated soap for household and personal care use.</p>
+
+            <ul>
+              <li>Unscented</li>
+              <li>Concentrated formula</li>
+              <li>Multi-purpose household & body use</li>
+            </ul>
+
+            <div style="margin-top:auto; padding-top:0.75rem;">
+            <button onclick="openModal('castileModal')">Ingredients & Safety Info</button>
+            </div>
+          </div>
+
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Rotating Homestead Goods -->
-  <section>
-    <h2>Rotating Homestead Goods</h2>
-    <div class="rotating-goods">
-      <p>Beyond the refill station, inventory changes throughout the season and may include mushrooms, compost products, herbs, experimental creations, and other curious little goblin projects.</p>
-      <p>Follow along on social media for updates and current market inventory.</p>
-    </div>
-  </section>
+    <section>
+      <div class="container">
+        <h2>Refill &gt; Replace</h2>
 
-  <!-- Socials / Contact -->
-  <section class="contact-section">
-    <h2>Follow Along</h2>
-    <p>For updates, seasonal inventory, and market announcements, follow along online.</p>
-    <div class="social-links">
-      <a href="https://instagram.com" target="_blank" rel="noopener">📷 Instagram</a>
-      <a href="https://facebook.com" target="_blank" rel="noopener">f Facebook</a>
-      <a href="mailto:hello@hopgoblinhomestead.com">✉️ Email</a>
-    </div>
-  </section>
-
-  <!-- Modals -->
-  
-  <!-- Laundry Detergent Modal -->
-  <div id="laundry-modal" class="modal" onclick="closeModal(event)">
-    <div class="modal-content" onclick="event.stopPropagation()">
-      <div class="modal-header">
-        <h3>Product Information</h3>
-        <button class="modal-close" onclick="closeModal()">&times;</button>
+        <div class="reasons-grid">
+          <div class="reason">Sustainable habits start with ordinary routines.</div>
+          <div class="reason">Bulk-style pricing without filling your house with giant containers.</div>
+          <div class="reason">Flexible quantities for practical needs.</div>
+        </div>
       </div>
+    </section>
 
-      <div class="modal-section">
-        <h4>Overview</h4>
-        <p>Sensitive-skin friendly liquid laundry detergent designed for everyday washing.</p>
+    <section>
+      <div class="container">
+        <h2>Other Curious Things</h2>
+
+        <p>
+          Mushrooms, herbs, compost, experimental creations, and other small-batch projects rotate through the market regularly. Follow along for updates and new additions.
+        </p>
+
+        <div class="social-links">
+          <a href="https://www.instagram.com/hopgoblinhomestead" target="_blank">Instagram</a>
+          <a href="#">Facebook</a>
+          <a href="mailto:hello@hopgoblinhomestead.com">Email</a>
+        </div>
       </div>
+    </section>
 
-      <div class="modal-section">
-        <h4>Recommended Use</h4>
-        <p>Approximately 1 oz per laundry load.</p>
-      </div>
+  </main>
 
-      <div class="modal-section">
-        <h4>Warnings</h4>
-        <ul>
-          <li>Avoid contact with eyes</li>
-          <li>Do not ingest</li>
-          <li>Keep out of reach of children</li>
-        </ul>
-      </div>
-
-      <div class="modal-section">
-        <h4>Ingredient Summary</h4>
-        <p>Contains water, cleaning surfactants, sodium carbonate, baking soda, stabilizers, and cleaning agents.</p>
-      </div>
-
-      <div class="modal-links">
-        <a href="https://churchdwight.com/ingredient-disclosure/laundry-fabric-care/42015525-ah-laundry-detergent-perfume-and-dye-free.aspx" target="_blank" rel="noopener">Full Ingredient Disclosure</a>
-        <a href="https://churchdwight.com/sds" target="_blank" rel="noopener">Safety Data Sheet (SDS)</a>
-      </div>
-
-      <div class="modal-note">
-        Additional product source information available upon request.
-      </div>
-    </div>
-  </div>
-
-  <!-- Dish Soap Modal -->
-  <div id="dish-modal" class="modal" onclick="closeModal(event)">
-    <div class="modal-content" onclick="event.stopPropagation()">
-      <div class="modal-header">
-        <h3>Product Information</h3>
-        <button class="modal-close" onclick="closeModal()">&times;</button>
-      </div>
-
-      <div class="modal-section">
-        <h4>Overview</h4>
-        <p>Free & clear liquid dish soap formulated for everyday dishwashing without added dyes or fragrances.</p>
-      </div>
-
-      <div class="modal-section">
-        <h4>Warnings</h4>
-        <ul>
-          <li>Avoid contact with eyes</li>
-          <li>Do not ingest</li>
-          <li>Keep out of reach of children</li>
-          <li>Not intended for automatic dishwashers</li>
-        </ul>
-      </div>
-
-      <div class="modal-section">
-        <h4>Ingredient Summary</h4>
-        <p>Contains plant-based surfactants, water, sodium chloride, citric acid, preservatives, and cleaning agents.</p>
-      </div>
-
-      <div class="modal-links">
-        <a href="https://www.seventhgeneration.com/dish-liquid-free-clear" target="_blank" rel="noopener">Full Ingredient Disclosure</a>
-        <a href="https://www.seventhgeneration.com/safety-data-sheets" target="_blank" rel="noopener">Safety Data Sheet (SDS)</a>
-      </div>
-
-      <div class="modal-note">
-        Additional product source information available upon request.
-      </div>
-    </div>
-  </div>
-
-  <!-- Castile Soap Modal -->
-  <div id="castile-modal" class="modal" onclick="closeModal(event)">
-    <div class="modal-content" onclick="event.stopPropagation()">
-      <div class="modal-header">
-        <h3>Product Information</h3>
-        <button class="modal-close" onclick="closeModal()">&times;</button>
-      </div>
-
-      <div class="modal-section">
-        <h4>Overview</h4>
-        <p>Unscented concentrated castile soap suitable for general household and personal care applications.</p>
-      </div>
-
-      <div class="modal-section">
-        <h4>Common Uses</h4>
-        <ul>
-          <li>Hand soap</li>
-          <li>General cleaning</li>
-          <li>Body wash</li>
-          <li>Diluted household cleaning solutions</li>
-        </ul>
-      </div>
-
-      <div class="modal-section">
-        <h4>Warnings</h4>
-        <ul>
-          <li>Avoid contact with eyes</li>
-          <li>External use only</li>
-          <li>Keep out of reach of children</li>
-          <li>Dilute as needed for many applications</li>
-        </ul>
-      </div>
-
-      <div class="modal-section">
-        <h4>Ingredient Summary</h4>
-        <p>Made with saponified organic oils and plant-based cleaning ingredients.</p>
-      </div>
-
-      <div class="modal-links">
-        <a href="https://www.amazon.com/dp/B0C7L3R2XK" target="_blank" rel="noopener">Product Information</a>
-      </div>
-
-      <div class="modal-note">
-        Supplier SDS availability may vary. Maintain digital supplier documentation for market reference. Additional product source information available upon request.
-      </div>
-    </div>
-  </div>
-
-  <!-- Footer -->
   <footer>
-    <p><strong>Hop Goblin Homestead</strong></p>
-    <p>Hagerstown, Maryland</p>
-    <div class="footer-links">
-      <a href="https://instagram.com" target="_blank" rel="noopener">Instagram</a>
-      <a href="https://facebook.com" target="_blank" rel="noopener">Facebook</a>
-      <a href="mailto:hello@hopgoblinhomestead.com">Email</a>
+    <div class="container">
+      <p>Hop Goblin Homestead · Hagerstown, Maryland</p>
+      <p style="margin-top:0.5rem; font-style:italic;">Built around sustainability, curiosity, and making useful things the low-waste way.</p>
     </div>
   </footer>
 
+  <!-- Laundry Modal -->
+  <div class="modal" id="laundryModal">
+    <div class="modal-content">
+      <button class="close" onclick="closeModal('laundryModal')">×</button>
+
+      <h2>Product Information</h2>
+
+      <p>Sensitive-skin friendly liquid laundry detergent designed for everyday washing.</p>
+
+      <h3>Recommended Use</h3>
+      <p>Approximately 1 oz per laundry load.</p>
+
+      <h3>Warnings</h3>
+      <ul>
+        <li>Avoid contact with eyes</li>
+        <li>Do not ingest</li>
+        <li>Keep out of reach of children</li>
+      </ul>
+
+      <h3>Ingredient Summary</h3>
+      <p>
+        Contains water, cleaning surfactants, sodium carbonate, baking soda, stabilizers, and cleaning agents.
+      </p>
+
+      <p>
+        <a href="https://churchdwight.com/ingredient-disclosure/laundry-fabric-care/42015525-ah-laundry-detergent-perfume-and-dye-free.aspx" target="_blank">Full Ingredient Disclosure</a>
+      </p>
+
+      <p>
+        <a href="https://churchdwight.com/sds" target="_blank">Safety Data Sheet (SDS)</a>
+      </p>
+
+      
+    </div>
+  </div>
+
+  <!-- Dish Modal -->
+  <div class="modal" id="dishModal">
+    <div class="modal-content">
+      <button class="close" onclick="closeModal('dishModal')">×</button>
+
+      <h2>Product Information</h2>
+
+      <p>
+        Free & clear liquid dish soap formulated for everyday dishwashing without added dyes or fragrances.
+      </p>
+
+      <h3>Warnings</h3>
+      <ul>
+        <li>Avoid contact with eyes</li>
+        <li>Do not ingest</li>
+        <li>Keep out of reach of children</li>
+        <li>Not intended for automatic dishwashers</li>
+      </ul>
+
+      <h3>Ingredient Summary</h3>
+      <p>
+        Contains plant-based surfactants, water, sodium chloride, citric acid, preservatives, and cleaning agents.
+      </p>
+
+      <p>
+        <a href="https://www.seventhgeneration.com/dish-liquid-free-clear" target="_blank">Full Ingredient Disclosure</a>
+      </p>
+
+      <p>
+        <a href="https://www.seventhgeneration.com/safety-data-sheets" target="_blank">Safety Data Sheet (SDS)</a>
+      </p>
+
+      
+    </div>
+  </div>
+
+  <!-- Castile Modal -->
+  <div class="modal" id="castileModal">
+    <div class="modal-content">
+      <button class="close" onclick="closeModal('castileModal')">×</button>
+
+      <h2>Product Information</h2>
+
+      <p>
+        Unscented concentrated castile soap suitable for general household and personal care applications.
+      </p>
+
+      <h3>Common Uses</h3>
+      <ul>
+        <li>Hand soap</li>
+        <li>General cleaning</li>
+        <li>Body wash</li>
+        <li>Diluted household cleaning solutions</li>
+      </ul>
+
+      <h3>Warnings</h3>
+      <ul>
+        <li>Avoid contact with eyes</li>
+        <li>External use only</li>
+        <li>Keep out of reach of children</li>
+        <li>Dilute as needed for many applications</li>
+      </ul>
+
+      <h3>Ingredient Summary</h3>
+      <p>
+        Made with saponified organic oils and plant-based cleaning ingredients.
+      </p>
+
+      <p>
+        <a href="https://www.amazon.com/dp/B0C7L3R2XK" target="_blank">Product Information</a>
+      </p>
+
+      <p class="muted">
+        Supplier SDS availability may vary. Maintain digital supplier documentation for market reference.
+      </p>
+
+      
+    </div>
+  </div>
+
   <script>
-    function openModal(product) {
-      const modalId = product + '-modal';
-      const modal = document.getElementById(modalId);
-      if (modal) {
-        modal.classList.add('active');
-        document.body.style.overflow = 'hidden';
-      }
+    function openModal(id) {
+      document.getElementById(id).style.display = 'flex';
     }
 
-    function closeModal(event) {
-      if (event && event.target.classList.contains('modal')) {
-        event.target.classList.remove('active');
-      } else {
-        const modals = document.querySelectorAll('.modal.active');
-        modals.forEach(m => m.classList.remove('active'));
-      }
-      document.body.style.overflow = 'auto';
+    function closeModal(id) {
+      document.getElementById(id).style.display = 'none';
     }
 
-    // Close modal on Escape key
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') closeModal();
-    });
+    window.onclick = function(event) {
+      document.querySelectorAll('.modal').forEach(modal => {
+        if (event.target === modal) {
+          modal.style.display = 'none';
+        }
+      });
+    }
   </script>
+
 </body>
 </html>
